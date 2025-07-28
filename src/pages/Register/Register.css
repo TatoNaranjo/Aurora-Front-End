@@ -1,0 +1,50 @@
+.registerCard{
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 40px;
+    align-items: center;
+}
+
+.registerContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 120px;
+    gap: 40px;
+}
+.registerTitle{
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.registerSubtitle{
+    font-size: var(--miniP);
+    font-weight: 400;
+    color: var(--neutral1);
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+.imageDiv1, .imageDiv2{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageDiv1 img, .imageDiv2 img {
+  max-width: 80%;
+  height: auto;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputHint{
+    text-transform: none;
+    color: #a9a9a9;
+}
