@@ -1,0 +1,50 @@
+.base {
+    display: flex;
+    flex-direction: column;
+  padding: 28px 40px;
+  border-radius: 1rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  max-width: 324px;
+  overflow: hidden;
+}
+
+.base h3{
+  margin: 0;
+}
+.base .subtitle{
+  margin-top: 0;
+}
+.iconDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+  width: 32px;
+  height: 32px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.content {
+  padding-top: 1rem;
+}
+
+.subtitle{
+    color:var(--neutral1);
+    font-size: 14px;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}

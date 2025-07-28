@@ -1,0 +1,26 @@
+.base {
+  padding: 1rem 24px;
+  border-radius: 8px;
+  font-size: var(--p);
+  font-weight:bold;
+  box-shadow: 4px 4px 0 var(--neutral3);
+  transition: transform 0.1s;
+}
+
+.base:hover{
+  border: none;
+}
+.primary {
+  background-color: var(--neutral1);
+  color: var(--white);
+}
+.accent {
+  background-color: #78d7ec;
+  color: black;
+}
+.secondary {
+  background-color: #78d7ec;
+
+  box-shadow: 4px 4px 0 var(--neutral1);
+  color: #5e3c00;
+}

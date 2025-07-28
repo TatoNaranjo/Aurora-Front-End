@@ -1,0 +1,19 @@
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--neutral1);
+    color: var(--white);
+    height: 94px;
+    padding: 0 32px;
+}
+
+.linkSection{
+    display: flex;
+    gap: 24px;
+}
+.linkSection a{
+
+    font-weight: bold;
+    color: var(--accent1);
+}
