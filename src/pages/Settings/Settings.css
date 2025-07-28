@@ -1,0 +1,36 @@
+.settingsContainer{
+    margin: 60px;
+}
+.settingsTitle{
+    margin:0;
+}
+.settingsSubtitle{
+    color: var(--grayTitle);
+    margin: 0;
+}
+.formSection{
+    display: flex;
+    gap: 40px;
+    margin: 40px 0;
+}
+.formFieldsContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.profileImageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.buttonRow{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    margin-top: 20px;
+}

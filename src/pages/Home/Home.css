@@ -1,0 +1,82 @@
+.introSection{
+    display: flex;
+    gap: 48px;
+    padding: 62px;
+    
+}
+.textDiv{
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+}
+
+    .textIntro{
+        color:var(--neutral1);
+    }
+
+    .buttonDivider{
+        padding: 20px 0;
+        display: flex;
+        gap: 24px;
+
+        button{
+            width: 100%;
+        }
+    }
+
+.featuresSection{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: var(--fBackground);
+    padding: 52px;
+}
+.fTitle{
+    margin: 0;
+    color: var(--brown);
+}
+.fSubtitle{
+    color: var(--accent5);
+    margin: 12px;
+    padding-bottom:24px 
+    
+}
+.fCardSection{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.aboutSection{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 64px;
+    padding-top: 124px;
+    gap: 48px;
+background-color: var(--yBackground);
+}
+
+.resourcesSection{
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 52px;
+
+}
+.rCardSection{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 120px;
+}
+
+.invitationSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 156px 80px;
+    background-color: var(--fBackground);
+}
