@@ -240,7 +240,7 @@ export const ModelReports = () => {
           ) : (
             <div
               ref={reportRef}
-              className="space-y-8 bg-white p-6 md:p-10 rounded-xl border border-border shadow-sm print:shadow-none print:border-0 print:p-0"
+              className="space-y-8 bg-card p-6 md:p-10 rounded-xl border border-border shadow-sm print:shadow-none print:border-0 print:p-0"
             >
               {/* Report Header (visible en PDF) */}
               <div className="border-b pb-6 mb-6">
