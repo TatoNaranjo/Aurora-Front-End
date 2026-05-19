@@ -5,11 +5,11 @@ const SCORING_LABELS = ['Nunca', 'Varios días', 'Más de la mitad de los días'
 
 const ReviewQuestion = ({ number, question, answer }: { number: number, question: string, answer: string }) => (
   <div className="space-y-3">
-    <p className="text-[12px] font-bold text-zinc-900 leading-relaxed">
+    <p className="text-[12px] font-bold text-foreground leading-relaxed">
       {number}. {question}
     </p>
     <div>
-      <span className="px-4 py-1.5 bg-zinc-50 border border-zinc-100 rounded-full text-[10px] font-bold text-zinc-900 leading-none">
+      <span className="px-4 py-1.5 bg-muted border border-border rounded-full text-[10px] font-bold text-foreground leading-none">
         {answer}
       </span>
     </div>
@@ -22,10 +22,10 @@ interface ReadOnlyScreeningProps {
 
 export const ReadOnlyScreening = ({ data }: ReadOnlyScreeningProps) => {
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 mt-8">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 mt-8 transition-colors duration-300">
       <CardHeader className="p-0 mb-8">
-        <CardTitle className="text-xl font-bold text-zinc-900">Resultados de Escalas de Tamizaje</CardTitle>
-        <p className="text-[10px] text-slate-400 font-medium">Criterios predefinidos para evaluación sistemática</p>
+        <CardTitle className="text-xl font-bold text-foreground">Resultados de Escalas de Tamizaje</CardTitle>
+        <p className="text-[10px] text-muted-foreground font-medium">Criterios predefinidos para evaluación sistemática</p>
       </CardHeader>
 
       <CardContent className="p-0 space-y-10">

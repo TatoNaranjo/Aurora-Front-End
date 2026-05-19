@@ -49,19 +49,19 @@ export const UserRequestGrid = () => {
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-grow">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             type="text"
             placeholder="Buscar Por Usuario o Email"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-zinc-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-indigo-100 transition-all bg-white"
+            className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-border text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all bg-card transition-colors duration-300"
           />
         </div>
         <select
           value={estadoFilter}
           onChange={(e) => setEstadoFilter(e.target.value)}
-          className="px-4 py-2.5 rounded-lg border border-zinc-200 text-xs font-medium text-slate-500 bg-white min-w-[200px]"
+          className="px-4 py-2.5 rounded-lg border border-border text-xs font-medium text-muted-foreground bg-card min-w-[200px] transition-colors duration-300"
         >
           <option value="">Todos los Estados</option>
           <option value="PENDIENTE">Pendiente</option>
@@ -73,7 +73,7 @@ export const UserRequestGrid = () => {
       {/* Grid Content */}
       {loading ? (
         <div className="flex items-center justify-center py-16">
-          <Loader2 className="w-8 h-8 text-zinc-400 animate-spin" />
+          <Loader2 className="w-8 h-8 text-muted-foreground animate-spin" />
         </div>
       ) : solicitudes.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -87,35 +87,35 @@ export const UserRequestGrid = () => {
           ))}
         </div>
       ) : (
-        <div className="py-16 text-center text-slate-400 font-medium text-sm">
+        <div className="py-16 text-center text-muted-foreground font-medium text-sm">
           No se encontraron solicitudes con los filtros seleccionados.
         </div>
       )}
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
-          <p className="text-[10px] text-slate-400 font-medium">
-            Mostrando <span className="text-zinc-900 font-bold">{solicitudes.length}</span> de{" "}
-            <span className="text-zinc-900 font-bold">{pagination.count}</span> solicitudes
+        <div className="flex items-center justify-between pt-4 border-t border-border">
+          <p className="text-[10px] text-muted-foreground font-medium">
+            Mostrando <span className="text-foreground font-bold">{solicitudes.length}</span> de{" "}
+            <span className="text-foreground font-bold">{pagination.count}</span> solicitudes
           </p>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={!pagination.previous}
-              className="p-2 rounded-lg border border-zinc-200 hover:bg-zinc-50 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              className="p-2 rounded-lg border border-border hover:bg-muted transition-all disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-300"
             >
-              <ChevronLeft className="w-4 h-4 text-zinc-600" />
+              <ChevronLeft className="w-4 h-4 text-foreground" />
             </button>
-            <span className="text-xs font-bold text-zinc-900 px-3">
+            <span className="text-xs font-bold text-foreground px-3">
               {currentPage} / {totalPages}
             </span>
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={!pagination.next}
-              className="p-2 rounded-lg border border-zinc-200 hover:bg-zinc-50 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              className="p-2 rounded-lg border border-border hover:bg-muted transition-all disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-300"
             >
-              <ChevronRight className="w-4 h-4 text-zinc-600" />
+              <ChevronRight className="w-4 h-4 text-foreground" />
             </button>
           </div>
         </div>

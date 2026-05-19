@@ -38,17 +38,17 @@ export const MisPQRS = () => {
 
   return (
     <DefaultLayout>
-      <div className="bg-[#f8faff] min-h-screen font-poppins pb-20">
+      <div className="bg-background min-h-screen font-poppins pb-20 transition-colors duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div>
-              <h1 className="text-3xl font-bold text-zinc-900">Mis Solicitudes PQRS</h1>
-              <p className="text-[11px] font-bold text-slate-400 tracking-wide uppercase mt-1">Sigue el estado de tus peticiones, quejas, reclamos y sugerencias</p>
+              <h1 className="text-3xl font-bold text-foreground">Mis Solicitudes PQRS</h1>
+              <p className="text-[11px] font-bold text-muted-foreground tracking-wide uppercase mt-1">Sigue el estado de tus peticiones, quejas, reclamos y sugerencias</p>
             </div>
             <button
               onClick={() => navigate('/help#pqrs-section')}
-              className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-indigo-100 whitespace-nowrap"
+              className="px-6 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl text-xs font-bold transition-all shadow-md shadow-primary/10 whitespace-nowrap"
             >
               Nueva Solicitud
             </button>
@@ -57,15 +57,15 @@ export const MisPQRS = () => {
           <div className="space-y-4">
             {loading ? (
               <div className="flex justify-center py-20">
-                <Loader2 className="w-8 h-8 text-zinc-400 animate-spin" />
+                <Loader2 className="w-8 h-8 text-muted-foreground animate-spin" />
               </div>
             ) : pqrsList.length > 0 ? (
               pqrsList.map((pqrs) => (
-                <Card key={pqrs.id_pqrs} className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden transition-all hover:shadow-md">
+                <Card key={pqrs.id_pqrs} className="rounded-2xl border-border shadow-sm bg-card overflow-hidden transition-all hover:shadow-md transition-colors duration-300">
                   <CardContent className="p-0">
                     <button
                       type="button"
-                      className="p-6 cursor-pointer hover:bg-slate-50 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                      className="p-6 cursor-pointer hover:bg-muted transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                       onClick={() => setExpandedId(expandedId === pqrs.id_pqrs ? null : pqrs.id_pqrs)}
                     >
                       <div className="space-y-2 flex-grow">
@@ -81,31 +81,31 @@ export const MisPQRS = () => {
                             </span>
                           )}
                         </div>
-                        <h3 className="font-bold text-zinc-900 text-base">{pqrs.asunto}</h3>
-                        <div className="text-xs text-slate-500 font-medium flex items-center gap-1">
+                        <h3 className="font-bold text-foreground text-base">{pqrs.asunto}</h3>
+                        <div className="text-xs text-muted-foreground font-medium flex items-center gap-1">
                           <Clock className="w-3 h-3" /> Enviada el {new Date(pqrs.fecha_creacion).toLocaleDateString()}
                         </div>
                       </div>
                       <div className="flex items-center shrink-0">
-                        {expandedId === pqrs.id_pqrs ? <ChevronUp className="w-5 h-5 text-slate-400" /> : <ChevronDown className="w-5 h-5 text-slate-400" />}
+                        {expandedId === pqrs.id_pqrs ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
                       </div>
                     </button>
 
                     {expandedId === pqrs.id_pqrs && (
-                      <div className="px-6 pb-6 bg-slate-50/50 border-t border-zinc-100 pt-6">
+                      <div className="px-6 pb-6 bg-muted/50 border-t border-border pt-6">
                         <div className="space-y-6">
                           <div>
-                            <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-1.5"><Inbox className="w-3 h-3" /> Tu Mensaje Original</h4>
-                            <p className="text-sm text-zinc-700 leading-relaxed bg-white p-4 rounded-xl border border-zinc-100">{pqrs.mensaje}</p>
+                            <h4 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2 flex items-center gap-1.5"><Inbox className="w-3 h-3" /> Tu Mensaje Original</h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed bg-card p-4 rounded-xl border border-border">{pqrs.mensaje}</p>
                           </div>
 
                           {pqrs.respuesta ? (
                             <div>
-                              <h4 className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                              <h4 className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
                                 <MessageCircle className="w-3 h-3" /> Respuesta del Equipo
-                                <span className="text-slate-400 font-medium lowercase">({new Date(pqrs.fecha_respuesta!).toLocaleDateString()})</span>
+                                <span className="text-muted-foreground font-medium lowercase">({new Date(pqrs.fecha_respuesta!).toLocaleDateString()})</span>
                               </h4>
-                              <p className="text-sm text-zinc-700 leading-relaxed bg-emerald-50/30 p-4 rounded-xl border border-emerald-100">
+                              <p className="text-sm text-muted-foreground leading-relaxed bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
                                 {pqrs.respuesta}
                               </p>
                             </div>
@@ -124,12 +124,12 @@ export const MisPQRS = () => {
                 </Card>
               ))
             ) : (
-              <div className="py-20 text-center flex flex-col items-center">
-                <div className="w-16 h-16 bg-zinc-50 rounded-full flex items-center justify-center mb-4">
-                  <Inbox className="w-8 h-8 text-zinc-300" />
+                <div className="py-20 text-center flex flex-col items-center">
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+                  <Inbox className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <h3 className="text-zinc-900 font-bold mb-1">Cero Solicitudes</h3>
-                <p className="text-slate-500 font-medium text-sm">No has enviado ninguna PQRS aún.</p>
+                <h3 className="text-foreground font-bold mb-1">Cero Solicitudes</h3>
+                <p className="text-muted-foreground font-medium text-sm">No has enviado ninguna PQRS aún.</p>
               </div>
             )}
           </div>

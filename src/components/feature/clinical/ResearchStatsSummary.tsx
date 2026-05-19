@@ -10,14 +10,14 @@ interface StatCardProps {
   color?: string;
 }
 
-const StatCard = ({ label, value, subtext, icon, color = "indigo-400" }: StatCardProps) => (
-  <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-6 flex flex-col justify-between">
+const StatCard = ({ label, value, subtext, icon, color = "primary" }: StatCardProps) => (
+  <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-6 flex flex-col justify-between transition-colors duration-300">
     <div className="flex justify-between items-start mb-4">
       <div className="space-y-1">
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{label}</p>
-        <p className="text-2xl font-bold text-zinc-900">{value}</p>
+        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{label}</p>
+        <p className="text-2xl font-bold text-foreground">{value}</p>
       </div>
-      <div className={`p-2 rounded-xl bg-zinc-50 border border-zinc-100 text-${color}`}>
+      <div className={`p-2 rounded-xl bg-muted border border-border text-${color}`}>
         {icon}
       </div>
     </div>
@@ -51,7 +51,7 @@ export const ResearchStatsSummary = ({ summary, loading }: ResearchStatsSummaryP
         value={loading ? "..." : (summary ? summary.risk_cases.toString() : "0")}
         subtext="Etiquetados severidad alta"
         icon={<Activity className="w-5 h-5" />}
-        color="zinc-900"
+        color="foreground"
       />
       <StatCard
         label="F1 Score"

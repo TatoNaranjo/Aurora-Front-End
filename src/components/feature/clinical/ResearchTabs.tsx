@@ -21,14 +21,14 @@ export const ResearchTabs = ({ activeTab, onTabChange }: ResearchTabsProps) => {
   }
 
   return (
-    <div className="bg-zinc-200 p-1 rounded-xl flex flex-col sm:flex-row gap-1 mb-12">
+    <div className="bg-muted p-1 rounded-xl flex flex-col sm:flex-row gap-1 mb-12">
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onTabChange(tab.id as TabType)}
           className={`flex-grow py-3 px-6 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all ${activeTab === tab.id
-            ? 'bg-white text-zinc-900 shadow-sm'
-            : 'text-zinc-500 hover:text-zinc-700 hover:bg-zinc-100/50'
+            ? 'bg-card text-foreground shadow-sm'
+            : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
             }`}
         >
           {tab.label}

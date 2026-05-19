@@ -12,22 +12,22 @@ interface FeedbackItemProps {
 }
 
 const FeedbackItem = ({ name, role, date, pic, initials, content }: FeedbackItemProps) => (
-  <div className="p-4 rounded-xl border border-zinc-50 bg-white space-y-4">
+  <div className="p-4 rounded-xl border border-border bg-card space-y-4 transition-colors duration-300">
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <Avatar className="w-8 h-8 rounded-full border border-zinc-100">
+        <Avatar className="w-8 h-8 rounded-full border border-border">
           <AvatarImage src={pic} />
-          <AvatarFallback className="bg-indigo-50 text-indigo-400 text-[10px] font-bold">{initials}</AvatarFallback>
+          <AvatarFallback className="bg-primary/10 text-primary text-[10px] font-bold">{initials}</AvatarFallback>
         </Avatar>
         <div>
-          <h5 className="text-[10px] font-bold text-zinc-900">{name}</h5>
-          <p className="text-[8px] text-slate-400 font-medium">{role}</p>
+          <h5 className="text-[10px] font-bold text-foreground">{name}</h5>
+          <p className="text-[8px] text-muted-foreground font-medium">{role}</p>
         </div>
       </div>
-      <span className="text-[8px] text-slate-300 font-bold uppercase">{date}</span>
+      <span className="text-[8px] text-muted-foreground font-bold uppercase">{date}</span>
     </div>
-    <div className="bg-zinc-50/50 rounded-lg p-3 border border-zinc-100">
-      <p className="text-[9px] text-slate-500 font-medium leading-relaxed italic">
+    <div className="bg-muted/50 rounded-lg p-3 border border-border">
+      <p className="text-[9px] text-muted-foreground font-medium leading-relaxed italic">
         "{content}"
       </p>
     </div>
@@ -36,10 +36,10 @@ const FeedbackItem = ({ name, role, date, pic, initials, content }: FeedbackItem
 
 export const SupervisorFeedback = ({ retroalimentaciones = [] }: { retroalimentaciones?: Retroalimentacion[] }) => {
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 mt-8">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 mt-8 transition-colors duration-300">
       <CardHeader className="p-0 mb-6">
-        <CardTitle className="text-sm font-bold text-zinc-900">Retroalimentación de supervisores</CardTitle>
-        <p className="text-[8px] text-slate-400 font-medium uppercase tracking-widest mt-1">Comentarios de Psicólogos e Investigadores para el caso</p>
+        <CardTitle className="text-sm font-bold text-foreground">Retroalimentación de supervisores</CardTitle>
+        <p className="text-[8px] text-muted-foreground font-medium uppercase tracking-widest mt-1">Comentarios de Psicólogos e Investigadores para el caso</p>
       </CardHeader>
 
       <CardContent className="p-0 space-y-4">
@@ -55,8 +55,8 @@ export const SupervisorFeedback = ({ retroalimentaciones = [] }: { retroalimenta
             />
           ))
         ) : (
-          <div className="py-8 text-center border-2 border-dashed border-zinc-50 rounded-xl">
-            <p className="text-[10px] text-slate-400 font-medium italic">No hay retroalimentaciones registradas para este caso.</p>
+          <div className="py-8 text-center border-2 border-dashed border-border rounded-xl">
+            <p className="text-[10px] text-muted-foreground font-medium italic">No hay retroalimentaciones registradas para este caso.</p>
           </div>
         )}
       </CardContent>

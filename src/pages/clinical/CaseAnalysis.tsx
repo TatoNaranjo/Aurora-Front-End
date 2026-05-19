@@ -20,7 +20,7 @@ export const CaseAnalysis = () => {
       <DefaultLayout>
         <div className="flex flex-col items-center justify-center h-[calc(100vh-200px)]">
           <Loader2 className="w-12 h-12 text-blue-500 animate-spin mb-4" />
-          <p className="text-slate-500 font-medium font-poppins">Cargando análisis de caso...</p>
+          <p className="text-muted-foreground font-medium font-poppins">Cargando análisis de caso...</p>
         </div>
       </DefaultLayout>
     );
@@ -38,10 +38,10 @@ export const CaseAnalysis = () => {
 
   return (
     <DefaultLayout>
-      <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8 font-poppins">
+      <div className="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8 font-poppins animate-in fade-in slide-in-from-bottom-4 duration-500">
         <CaseHeader id={data.id} lastConsultation={data.lastConsultation} />
 
-        <div className="bg-white rounded-2xl shadow-sm border border-zinc-100 p-6 md:p-8">
+        <div className="bg-card rounded-2xl shadow-sm border border-border p-6 md:p-8 transition-colors duration-300">
           <CaseInfoSection
             ageGroup={data.ageGroup}
             gender={data.gender}

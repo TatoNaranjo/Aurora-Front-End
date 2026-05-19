@@ -32,19 +32,19 @@ const resources = [
 export const Resources = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex justify-center flex-col items-center max-w-[1440px] py-20 px-11 gap-4 w-full">
         <h2 className="text-yellow-900 text-3xl font-bold text-center">Recursos Para Estudiantes</h2>
-        <p className="text-slate-500 text-2xl font-semibold mb-10 text-center">Material de apoyo para complementar tu formación clínica</p>
+        <p className="text-muted-foreground text-2xl font-semibold mb-10 text-center">Material de apoyo para complementar tu formación clínica</p>
         <div className="flex justify-around w-full flex-wrap gap-5">
           {resources.map((resource) => (
-            <Card className="rounded border border-indigo-300 flex flex-col text-left items-start max-w-[560px] min-h-30 px-1">
+            <Card className="rounded border border-primary/50 flex flex-col text-left items-start max-w-[560px] min-h-30 px-1 transition-colors duration-300">
               <CardHeader className="flex gap-3 mt-5 pb-3">
                 <div className="flex justify-start">
                   {resource.icon}
                 </div>
                 <h3 className="text-black font-semibold text-2xl">{resource.title}</h3>
-                <h4 className={`text-sm font-normal text-slate-500`}>{resource.subtitle}</h4>
+                <h4 className={`text-sm font-normal text-muted-foreground`}>{resource.subtitle}</h4>
               </CardHeader>
               <CardContent className="pb-3">
                 <p>{resource.description}</p>

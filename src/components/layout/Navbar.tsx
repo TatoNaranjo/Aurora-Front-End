@@ -77,10 +77,10 @@ export const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className='w-full bg-indigo-300'>
-      <nav className="navbar h-20 relative bg-indigo-300 flex justify-between p-0 md:p-5 items-center flex-wrap max-w-[1600px] mx-auto">
+    <header className='w-full bg-primary transition-colors duration-300'>
+      <nav className="navbar h-20 relative bg-primary flex justify-between p-0 md:p-5 items-center flex-wrap max-w-[1600px] mx-auto transition-colors duration-300">
         <button type="button" className="flex items-center gap-2 cursor-pointer" onClick={() => navigate(userState.usuario ? '/dashboard' : '/')}>
-          <span className="text-white text-3xl font-bold my-5 ml-5 md:m-0">AURORA</span>
+          <span className="text-primary-foreground text-3xl font-bold my-5 ml-5 md:m-0">AURORA</span>
         </button>
 
         {/* Desktop Menu */}
@@ -92,7 +92,7 @@ export const Navbar = () => {
                 <Button
                   key={item.path}
                   variant={isActive(item.path) ? "secondary" : "ghost"}
-                  className={isActive(item.path) ? "bg-white text-indigo-600 hover:bg-white/90" : "text-white hover:bg-indigo-400 hover:text-white"}
+                  className={isActive(item.path) ? "bg-background text-primary hover:bg-background/90" : "text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"}
                   onClick={() => navigate(item.path)}
                 >
                   {item.label}
@@ -100,10 +100,10 @@ export const Navbar = () => {
               ))
             ) : (
               <>
-                <Button variant="ghost" className="text-white hover:bg-indigo-400 hover:text-white" onClick={() => navigate("/login")}>
+                <Button variant="ghost" className="text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground" onClick={() => navigate("/login")}>
                   Iniciar Sesión
                 </Button>
-                <Button variant="secondary" className="bg-white text-indigo-600 hover:bg-indigo-50" onClick={() => navigate("/register")}>
+                <Button variant="secondary" className="bg-background text-primary hover:bg-accent" onClick={() => navigate("/register")}>
                   Registrarse
                 </Button>
               </>
@@ -116,7 +116,7 @@ export const Navbar = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                    <Avatar className="h-10 w-10 border-2 border-white/20">
+                    <Avatar className="h-10 w-10 border-2 border-primary-foreground/20">
                       <AvatarImage src={`${apiUrl}${userState.usuario.imagen}`} alt={userState.usuario.nombre} />
                       <AvatarFallback>{userState.usuario.nombre?.substring(0, 2).toUpperCase() || 'US'}</AvatarFallback>
                     </Avatar>
@@ -142,7 +142,7 @@ export const Navbar = () => {
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={onLogout} className="text-red-600 focus:text-red-600">
+                  <DropdownMenuItem onClick={onLogout} className="text-destructive focus:text-destructive">
                     Cerrar Sesión
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -154,7 +154,7 @@ export const Navbar = () => {
           <button
             onClick={toggleMenu}
             type="button"
-            className="inline-flex items-center p-2 mr-4 text-sm text-white rounded-lg md:hidden hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white"
+            className="inline-flex items-center p-2 mr-4 text-sm text-primary-foreground rounded-lg md:hidden hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary-foreground"
             aria-expanded={isMenuOpen}
           >
             <span className="sr-only">Abrir menú</span>
@@ -165,7 +165,7 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:hidden absolute top-20 left-0 bg-indigo-300 z-50 shadow-lg px-4 pb-4`}>
+        <div className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:hidden absolute top-20 left-0 bg-primary z-50 shadow-lg px-4 pb-4 transition-colors duration-300`}>
           <ul className="flex flex-col space-y-2 mt-4">
             {userState.usuario ? (
               <>
@@ -173,7 +173,7 @@ export const Navbar = () => {
                   <li key={item.path}>
                     <Button
                       variant={isActive(item.path) ? "secondary" : "ghost"}
-                      className={`w-full justify-start ${isActive(item.path) ? "bg-white text-indigo-600" : "text-white hover:bg-indigo-400"}`}
+                      className={`w-full justify-start ${isActive(item.path) ? "bg-background text-primary" : "text-primary-foreground hover:bg-primary/90"}`}
                       onClick={() => {
                         navigate(item.path);
                         setIsMenuOpen(false);
@@ -187,12 +187,12 @@ export const Navbar = () => {
             ) : (
               <>
                 <li>
-                  <Button variant="ghost" className="w-full justify-start text-white hover:bg-indigo-400" onClick={() => { navigate("/login"); setIsMenuOpen(false); }}>
+                  <Button variant="ghost" className="w-full justify-start text-primary-foreground hover:bg-primary/90" onClick={() => { navigate("/login"); setIsMenuOpen(false); }}>
                     Iniciar Sesión
                   </Button>
                 </li>
                 <li>
-                  <Button variant="secondary" className="w-full justify-start bg-white text-indigo-600" onClick={() => { navigate("/register"); setIsMenuOpen(false); }}>
+                  <Button variant="secondary" className="w-full justify-start bg-background text-primary" onClick={() => { navigate("/register"); setIsMenuOpen(false); }}>
                     Registrarse
                   </Button>
                 </li>

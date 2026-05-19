@@ -56,7 +56,7 @@ export const LoginForm = () => {
         <CardTitle className="justify-center text-black text-3xl font-bold mb-1 text-center">
           Inicio de Sesión
         </CardTitle>
-        <CardDescription className="justify-center text-slate-500 text-sm font-normal text-center">
+        <CardDescription className="justify-center text-muted-foreground text-sm font-normal text-center">
           Ingresa tus datos para acceder a la Plataforma
         </CardDescription>
       </CardHeader>

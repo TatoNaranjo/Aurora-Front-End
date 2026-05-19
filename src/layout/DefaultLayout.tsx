@@ -8,7 +8,7 @@ export const DefaultLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar/>
-      <main className="h-full flex-grow bg-white flex flex-col">
+      <main className="h-full flex-grow bg-background flex flex-col transition-colors duration-300">
         {children}
       </main>
       <Footer/>

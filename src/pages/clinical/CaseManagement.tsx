@@ -37,43 +37,43 @@ export const CaseManagement = () => {
 
   return (
     <DefaultLayout>
-      <div className="bg-[#f8faff] min-h-screen font-poppins pb-20">
+      <div className="bg-background min-h-screen font-poppins pb-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
           {/* Header */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="space-y-1">
-              <h1 className="text-3xl font-bold text-zinc-900">Historial de Casos</h1>
-              <p className="text-[11px] font-bold text-slate-400 tracking-wide uppercase">Gestión y Seguimiento de Diagnósticos Clínicos</p>
+              <h1 className="text-3xl font-bold text-foreground">Historial de Casos</h1>
+              <p className="text-[11px] font-bold text-muted-foreground tracking-wide uppercase">Gestión y Seguimiento de Diagnósticos Clínicos</p>
             </div>
             <button
               onClick={() => navigate("/clinical-diagnostic")}
-              className="flex items-center gap-2 px-6 py-3 bg-indigo-300 hover:bg-indigo-400 text-white rounded-xl text-sm font-bold transition-all shadow-lg shadow-indigo-100"
+              className="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary/10"
             >
               <Plus className="w-4 h-4" /> Nuevo Diagnóstico
             </button>
           </div>
 
           {/* Filters Area */}
-          <div className="bg-white border border-zinc-100 rounded-[2rem] p-6 mb-12 shadow-sm flex flex-col md:flex-row gap-6">
+          <div className="bg-card border border-border rounded-[2rem] p-6 mb-12 shadow-sm flex flex-col md:flex-row gap-6 transition-colors duration-300">
             <div className="relative flex-grow">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Buscar por nombre de caso o ID de paciente..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-xl border border-zinc-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all bg-slate-50/50"
+                className="w-full pl-12 pr-4 py-3 rounded-xl border border-border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all bg-muted/50"
               />
             </div>
 
             <div className="flex gap-4">
               <div className="relative min-w-[180px]">
-                <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-zinc-200 text-sm font-medium text-slate-600 bg-slate-50/50 appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-border text-sm font-medium text-muted-foreground bg-muted/50 appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20"
                 >
                   <option value="Todos">Todos los estados</option>
                   <option value="Registrada">Registradas</option>
@@ -89,8 +89,8 @@ export const CaseManagement = () => {
           {/* Grid Content */}
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20 space-y-4">
-              <Loader2 className="w-10 h-10 text-indigo-500 animate-spin" />
-              <p className="text-slate-500 font-medium">Cargando historial de casos...</p>
+              <Loader2 className="w-10 h-10 text-primary animate-spin" />
+              <p className="text-muted-foreground font-medium">Cargando historial de casos...</p>
             </div>
           ) : filteredCases.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -104,20 +104,20 @@ export const CaseManagement = () => {
               ))}
             </div>
           ) : (
-            <div className="bg-white border border-dashed border-zinc-200 rounded-[2.5rem] py-24 px-8 text-center">
+            <div className="bg-card border border-dashed border-border rounded-[2.5rem] py-24 px-8 text-center transition-colors duration-300">
               <div className="max-w-md mx-auto space-y-6">
-                <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto">
-                  <ClipboardList className="w-10 h-10 text-slate-300" />
+                <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto">
+                  <ClipboardList className="w-10 h-10 text-muted-foreground" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-zinc-900">No se encontraron casos</h3>
-                  <p className="text-sm text-slate-500">
+                  <h3 className="text-xl font-bold text-foreground">No se encontraron casos</h3>
+                  <p className="text-sm text-muted-foreground">
                     No hay registros que coincidan con tu búsqueda o filtros actuales. Intenta ajustar los criterios.
                   </p>
                 </div>
                 <button
                   onClick={() => { setSearchTerm(""); setFilterStatus("Todos"); }}
-                  className="text-indigo-600 font-bold text-sm hover:underline"
+                  className="text-primary font-bold text-sm hover:underline"
                 >
                   Limpiar todos los filtros
                 </button>
@@ -126,8 +126,8 @@ export const CaseManagement = () => {
           )}
 
           {/* Academic Disclaimer */}
-          <div className="mt-20 bg-white border border-zinc-100 rounded-xl p-4">
-            <p className="text-[10px] text-zinc-900 leading-relaxed">
+          <div className="mt-20 bg-card border border-border rounded-xl p-4 transition-colors duration-300">
+            <p className="text-[10px] text-foreground leading-relaxed">
               <span className="font-bold">Uso Académico:</span> Este sistema es únicamente para fines educativos. Los resultados no constituyen diagnósticos médicos reales y no deben usarse para decisiones clínicas en pacientes reales.
             </p>
           </div>

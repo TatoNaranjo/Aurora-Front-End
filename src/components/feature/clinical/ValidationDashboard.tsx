@@ -4,13 +4,13 @@ import { useValidationDashboard, useUser } from "@/hooks";
 import type { Auditoria } from "@/types/BackendTypes";
 
 const ValidationStatCard = ({ label, value, subtext, icon }: { label: string, value: string, subtext: string, icon: React.ReactNode }) => (
-  <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-6 flex flex-col justify-between h-32">
+  <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-6 flex flex-col justify-between h-32 transition-colors duration-300">
     <div className="flex justify-between items-start mb-4">
       <div className="space-y-1">
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{label}</p>
-        <p className="text-xl font-bold text-zinc-900">{value}</p>
+        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{label}</p>
+        <p className="text-xl font-bold text-foreground">{value}</p>
       </div>
-      <div className="p-2 rounded-xl bg-zinc-50 border border-zinc-100 text-zinc-900">
+      <div className="p-2 rounded-xl bg-muted border border-border text-foreground">
         {icon}
       </div>
     </div>
@@ -22,14 +22,14 @@ const SystemComponentBar = ({ label, value, percentage, icon }: { label: string,
   <div className="space-y-4">
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-3">
-        <div className="text-zinc-900">{icon}</div>
-        <span className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">{label}</span>
+        <div className="text-foreground">{icon}</div>
+        <span className="text-[10px] font-bold text-foreground uppercase tracking-widest">{label}</span>
       </div>
-      <span className="px-3 py-1 bg-zinc-50 border border-zinc-100 rounded-full text-[9px] font-bold text-zinc-900">{value}</span>
+      <span className="px-3 py-1 bg-muted border border-border rounded-full text-[9px] font-bold text-foreground">{value}</span>
     </div>
-    <div className="h-1.5 w-full bg-zinc-100 rounded-full overflow-hidden">
+    <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
       <div
-        className="h-full bg-[#637bc4] rounded-full transition-all duration-1000"
+        className="h-full bg-primary rounded-full transition-all duration-1000"
         style={{ width: `${percentage}%` }}
       />
     </div>
@@ -45,7 +45,7 @@ export const ValidationDashboard = () => {
   if (metricsLoading || healthLoading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <Loader2 className="w-8 h-8 text-indigo-500 animate-spin" />
+        <Loader2 className="w-8 h-8 text-primary animate-spin" />
       </div>
     );
   }
@@ -76,9 +76,9 @@ export const ValidationDashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* System State */}
-        <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8">
-          <h4 className="text-md font-bold text-zinc-900 mb-2">Estado del Sistema</h4>
-          <p className="text-[10px] text-slate-400 font-medium mb-12">Monitoreo en tiempo real de los componentes críticos</p>
+        <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 transition-colors duration-300">
+          <h4 className="text-md font-bold text-foreground mb-2">Estado del Sistema</h4>
+          <p className="text-[10px] text-muted-foreground font-medium mb-12">Monitoreo en tiempo real de los componentes críticos</p>
 
           <div className="space-y-10">
             {health?.components.map((comp, idx) => {
@@ -94,33 +94,33 @@ export const ValidationDashboard = () => {
 
         {/* Recent Activity */}
         {canViewActivity && (
-          <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 flex flex-col justify-between">
+          <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 flex flex-col justify-between transition-colors duration-300">
             <div>
-              <h4 className="text-md font-bold text-zinc-900 mb-2">Actividad Reciente</h4>
-              <p className="text-[10px] text-slate-400 font-medium mb-12">Últimas Operaciones Realizadas en el Sistema</p>
+              <h4 className="text-md font-bold text-foreground mb-2">Actividad Reciente</h4>
+              <p className="text-[10px] text-muted-foreground font-medium mb-12">Últimas Operaciones Realizadas en el Sistema</p>
 
               <div className="space-y-6">
                 {(recentActivity || []).slice(0, 4).map((activity: Auditoria, i: number) => (
                   <div key={i} className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-indigo-300" />
-                      <p className="text-[10px] font-medium text-zinc-900">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                      <p className="text-[10px] font-medium text-foreground">
                         {activity.descripcion || activity.tipo_cambio || "Actividad registrada"}
                       </p>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                    <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
                       {new Date(activity.fecha_inicio).toLocaleDateString()}
                     </span>
                   </div>
                 ))}
                 {(!recentActivity || recentActivity.length === 0) && (
-                  <p className="text-[10px] text-slate-400 text-center">No hay actividad reciente.</p>
+                  <p className="text-[10px] text-muted-foreground text-center">No hay actividad reciente.</p>
                 )}
               </div>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-zinc-50 flex justify-end">
-              <button onClick={exportAudits} className="flex items-center gap-2 px-4 py-2 border border-zinc-100 rounded-lg text-[10px] font-bold text-zinc-900 hover:bg-zinc-50 transition-all">
+            <div className="mt-8 pt-4 border-t border-border flex justify-end">
+              <button onClick={exportAudits} className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg text-[10px] font-bold text-foreground hover:bg-muted transition-all transition-colors duration-300">
                 <Download className="w-3.5 h-3.5" /> Exportar Auditorías
               </button>
             </div>

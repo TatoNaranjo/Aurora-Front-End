@@ -42,7 +42,7 @@ export const ForgotPasswordForm = () => {
           <CardTitle className="text-black text-2xl font-bold mb-2 text-center">
             Correo Enviado
           </CardTitle>
-          <CardDescription className="text-slate-500 text-sm font-normal text-center">
+          <CardDescription className="text-muted-foreground text-sm font-normal text-center">
             Si el correo está registrado, recibirás un enlace para restablecer tu contraseña en unos momentos.
           </CardDescription>
         </CardHeader>
@@ -61,7 +61,7 @@ export const ForgotPasswordForm = () => {
         <CardTitle className="justify-center text-black text-3xl font-bold mb-1 text-center">
           Recuperar Contraseña
         </CardTitle>
-        <CardDescription className="justify-center text-slate-500 text-sm font-normal text-center">
+        <CardDescription className="justify-center text-muted-foreground text-sm font-normal text-center">
           Ingresa tu correo electrónico para recibir un enlace de recuperación
         </CardDescription>
       </CardHeader>

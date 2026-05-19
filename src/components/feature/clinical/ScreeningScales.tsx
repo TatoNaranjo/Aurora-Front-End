@@ -10,7 +10,7 @@ interface QuestionProps {
 
 const Question = ({ number, question, id, value, onChange }: QuestionProps) => (
   <div className="space-y-4">
-    <p className="text-[11px] font-bold text-zinc-900 leading-relaxed">
+    <p className="text-[11px] font-bold text-foreground leading-relaxed">
       {number}. {question}
     </p>
     <div className="space-y-2">
@@ -22,11 +22,11 @@ const Question = ({ number, question, id, value, onChange }: QuestionProps) => (
               name={id}
               checked={value === idx}
               onChange={() => onChange(id, idx)}
-              className="peer appearance-none w-4 h-4 border border-zinc-200 rounded-full checked:border-indigo-400 transition-all cursor-pointer"
+              className="peer appearance-none w-4 h-4 border border-border rounded-full checked:border-primary transition-all cursor-pointer transition-colors duration-300"
             />
-            <div className="absolute w-2 h-2 bg-indigo-400 rounded-full scale-0 peer-checked:scale-100 transition-transform pointer-events-none" />
+            <div className="absolute w-2 h-2 bg-primary rounded-full scale-0 peer-checked:scale-100 transition-transform pointer-events-none" />
           </div>
-          <span className="text-[10px] font-medium text-slate-500 group-hover:text-zinc-900 transition-colors">
+          <span className="text-[10px] font-medium text-muted-foreground group-hover:text-foreground transition-colors">
             {option}
           </span>
         </label>
@@ -62,10 +62,10 @@ export const ScreeningScales = ({ value, onChange }: ScreeningScalesProps) => {
   };
 
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 mt-8">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 mt-8 transition-colors duration-300">
       <CardHeader className="p-0 mb-8">
-        <CardTitle className="text-xl font-bold text-zinc-900">Escalas de Tamizaje</CardTitle>
-        <p className="text-[10px] text-slate-400 font-medium">Criterios preliminares y síntomas detectados para el caso.</p>
+        <CardTitle className="text-xl font-bold text-foreground">Escalas de Tamizaje</CardTitle>
+        <p className="text-[10px] text-muted-foreground font-medium">Criterios preliminares y síntomas detectados para el caso.</p>
       </CardHeader>
 
       <CardContent className="p-0 space-y-10">

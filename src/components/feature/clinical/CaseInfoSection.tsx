@@ -44,11 +44,11 @@ export const CaseInfoSection = ({ ageGroup, gender, clinicalVignette, shapExplan
       let className = "px-1 py-0.5 rounded transition-all duration-200 cursor-help ";
       
       if (isSignificant) {
-        className += isPositive 
-          ? 'bg-rose-100 text-rose-900 font-bold border-b-2 border-rose-300' 
-          : 'bg-emerald-100 text-emerald-900 font-bold border-b-2 border-emerald-300';
+        className += isPositive
+          ? 'bg-rose-100 text-rose-900 font-bold border-b-2 border-rose-300 dark:bg-rose-900/30 dark:text-rose-200 dark:border-rose-700'
+          : 'bg-emerald-100 text-emerald-900 font-bold border-b-2 border-emerald-300 dark:bg-emerald-900/30 dark:text-emerald-200 dark:border-emerald-700';
       } else {
-        className += 'hover:bg-slate-100 border-b border-dotted border-slate-400';
+        className += 'hover:bg-muted border-b border-dotted border-muted-foreground';
       }
 
       result = result.replace(regex, `<span class="${className} mx-0.5" title="${tooltip}">$1</span>`);
@@ -59,30 +59,30 @@ export const CaseInfoSection = ({ ageGroup, gender, clinicalVignette, shapExplan
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      <Card className="md:col-span-1 rounded-xl shadow-sm border-zinc-200">
+      <Card className="md:col-span-1 rounded-xl shadow-sm border-border transition-colors duration-300">
         <CardHeader>
           <CardTitle className="text-xl font-bold">Información del Caso</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
-          <p className="text-sm font-semibold text-indigo-400">
-            Grupo de Edad: <span className="text-slate-500 font-normal">{ageGroup}</span>
+          <p className="text-sm font-semibold text-primary">
+            Grupo de Edad: <span className="text-muted-foreground font-normal">{ageGroup}</span>
           </p>
-          <p className="text-sm font-semibold text-indigo-400">
-            Sexo: <span className="text-slate-500 font-normal">{gender}</span>
+          <p className="text-sm font-semibold text-primary">
+            Sexo: <span className="text-muted-foreground font-normal">{gender}</span>
           </p>
         </CardContent>
       </Card>
 
-      <Card className="md:col-span-2 rounded-xl shadow-sm border-zinc-200">
+      <Card className="md:col-span-2 rounded-xl shadow-sm border-border transition-colors duration-300">
         <CardHeader>
           <CardTitle className="text-xl font-bold">Viñeta Clínica</CardTitle>
-          <p className="text-xs text-blue-400 font-medium italic">
+          <p className="text-xs text-primary font-medium italic">
             Texto analizado para la detección de patrones de depresión
           </p>
         </CardHeader>
         <CardContent>
           <p
-            className="text-slate-700 leading-relaxed text-sm whitespace-pre-wrap"
+            className="text-foreground leading-relaxed text-sm whitespace-pre-wrap"
             dangerouslySetInnerHTML={{ __html: highlightedText }}
           />
         </CardContent>

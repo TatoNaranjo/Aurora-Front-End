@@ -2,8 +2,8 @@ import { Card, CardHeader, CardTitle } from "@/components/ui";
 
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => (
   <div className="space-y-2">
-    <h5 className="text-[11px] font-bold text-zinc-900">{question}</h5>
-    <p className="text-[10px] font-medium text-slate-500 leading-relaxed">{answer}</p>
+    <h5 className="text-[11px] font-bold text-foreground">{question}</h5>
+    <p className="text-[10px] font-medium text-muted-foreground leading-relaxed">{answer}</p>
   </div>
 );
 
@@ -16,16 +16,16 @@ export const ModelComparison = () => {
   ];
 
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 mt-10">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 mt-10 transition-colors duration-300">
       <CardHeader className="p-0 mb-8">
-        <CardTitle className="text-xl font-bold text-zinc-900">Comparación de Modelos</CardTitle>
-        <p className="text-[10px] text-slate-400 font-medium">Compara el rendimiento de los diferentes modelos implementados en el sistema.</p>
+        <CardTitle className="text-xl font-bold text-foreground">Comparación de Modelos</CardTitle>
+        <p className="text-[10px] text-muted-foreground font-medium">Compara el rendimiento de los diferentes modelos implementados en el sistema.</p>
       </CardHeader>
 
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-zinc-100 text-[10px] font-bold text-zinc-900 uppercase tracking-widest">
+            <tr className="border-b border-border text-[10px] font-bold text-foreground uppercase tracking-widest">
               <th className="pb-4 pr-4">Modelo</th>
               <th className="pb-4 px-4">Precisión</th>
               <th className="pb-4 px-4">Sensibilidad</th>
@@ -35,17 +35,17 @@ export const ModelComparison = () => {
               <th className="pb-4 pl-4 text-right">Estado</th>
             </tr>
           </thead>
-          <tbody className="text-[10px] font-medium text-slate-500">
+          <tbody className="text-[10px] font-medium text-muted-foreground">
             {models.map((m, i) => (
-              <tr key={i} className="border-b last:border-0 border-zinc-50 hover:bg-zinc-50/50 transition-all">
-                <td className="py-4 pr-4 font-bold text-zinc-900">{m.name}</td>
+              <tr key={i} className="border-b last:border-0 border-border hover:bg-muted/50 transition-colors">
+                <td className="py-4 pr-4 font-bold text-foreground">{m.name}</td>
                 <td className="py-4 px-4">{m.acc}</td>
                 <td className="py-4 px-4">{m.sens}</td>
                 <td className="py-4 px-4">{m.spec}</td>
                 <td className="py-4 px-4">{m.f1}</td>
                 <td className="py-4 px-4">{m.time}</td>
                 <td className="py-4 pl-4 text-right">
-                  <span className={`px-3 py-1 rounded-full border text-[9px] font-bold ${m.status === 'Activo' ? "bg-white border-zinc-200 text-zinc-900" : "bg-white border-zinc-100 text-zinc-400"
+                  <span className={`px-3 py-1 rounded-full border text-[9px] font-bold ${m.status === 'Activo' ? "bg-card border-border text-foreground" : "bg-card border-border text-muted-foreground"
                     }`}>
                     {m.status}
                   </span>
@@ -56,8 +56,8 @@ export const ModelComparison = () => {
         </table>
       </div>
 
-      <div className="mt-12 pt-8 border-t border-zinc-100 space-y-6">
-        <h4 className="text-sm font-bold text-zinc-900">Preguntas Frecuentes</h4>
+      <div className="mt-12 pt-8 border-t border-border space-y-6">
+        <h4 className="text-sm font-bold text-foreground">Preguntas Frecuentes</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <FAQItem
             question="¿Cuál es el mejor Modelo Para Usar?"
@@ -79,10 +79,10 @@ export const ModelComparison = () => {
       </div>
 
       <div className="mt-10 flex flex-col sm:flex-row gap-4">
-        <button className="flex-1 py-3 bg-indigo-50 border border-indigo-200 text-indigo-400 text-[10px] font-bold rounded-lg shadow-sm hover:bg-indigo-100 transition-all uppercase tracking-widest">
+        <button className="flex-1 py-3 bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold rounded-lg shadow-sm hover:bg-primary/20 transition-colors duration-300 uppercase tracking-widest">
           Descargar Informe Comparativo
         </button>
-        <button className="flex-1 py-3 bg-indigo-400 text-white text-[10px] font-bold rounded-lg shadow-lg shadow-indigo-100 hover:bg-indigo-500 transition-all uppercase tracking-widest">
+        <button className="flex-1 py-3 bg-primary text-primary-foreground text-[10px] font-bold rounded-lg shadow-lg shadow-primary/10 hover:bg-primary/90 transition-colors duration-300 uppercase tracking-widest">
           Solicitar Acceso a Modelos Experimentales
         </button>
       </div>

@@ -29,13 +29,13 @@ export const UserRequestCard = ({ solicitud, onResolver, resolving }: UserReques
   const isPendiente = estado === 'PENDIENTE';
 
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 hover:shadow-md transition-all">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 hover:shadow-md transition-all transition-colors duration-300">
       <div className="flex flex-col h-full">
         {/* Header */}
         <div className="flex justify-between items-start mb-6">
           <div className="space-y-1">
-            <h4 className="text-sm font-bold text-zinc-900">{usuario_objetivo.nombre}</h4>
-            <p className="text-[10px] font-medium text-slate-400">{usuario_objetivo.correo}</p>
+            <h4 className="text-sm font-bold text-foreground">{usuario_objetivo.nombre}</h4>
+            <p className="text-[10px] font-medium text-muted-foreground">{usuario_objetivo.correo}</p>
           </div>
           {getStatusBadge()}
         </div>
@@ -43,16 +43,16 @@ export const UserRequestCard = ({ solicitud, onResolver, resolving }: UserReques
         {/* Metadata */}
         <div className="space-y-3 mb-8 flex-grow">
           <div className="flex justify-between items-center text-[10px]">
-            <span className="font-bold text-slate-400 uppercase tracking-widest">Fecha Solicitud:</span>
-            <span className="font-bold text-zinc-900">{fechaFormateada}</span>
+            <span className="font-bold text-muted-foreground uppercase tracking-widest">Fecha Solicitud:</span>
+            <span className="font-bold text-foreground">{fechaFormateada}</span>
           </div>
           <div className="flex justify-between items-center text-[10px]">
-            <span className="font-bold text-slate-400 uppercase tracking-widest">Tipo:</span>
-            <span className="font-bold text-zinc-900">{isBloqueo ? 'Bloqueo' : 'Desbloqueo'}</span>
+            <span className="font-bold text-muted-foreground uppercase tracking-widest">Tipo:</span>
+            <span className="font-bold text-foreground">{isBloqueo ? 'Bloqueo' : 'Desbloqueo'}</span>
           </div>
           <div className="space-y-1 pt-2">
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Motivo:</p>
-            <p className="text-[10px] font-medium text-zinc-900 leading-relaxed italic">{motivo}</p>
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Motivo:</p>
+            <p className="text-[10px] font-medium text-foreground leading-relaxed italic">{motivo}</p>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export const UserRequestCard = ({ solicitud, onResolver, resolving }: UserReques
             <button
               onClick={() => onResolver(solicitud.id)}
               disabled={resolving}
-              className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-bold transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed ${isBloqueo
+              className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-bold transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 ${isBloqueo
                   ? 'bg-red-600 hover:bg-red-700 text-white shadow-red-100'
                   : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-100'
                 }`}

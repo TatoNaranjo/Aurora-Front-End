@@ -46,7 +46,7 @@ export const AccountActivation = () => {
   return (
     <DefaultLayout>
       <div className="flex items-center justify-center flex-grow p-4">
-        <Card className="w-full max-w-md">
+        <Card className="w-full max-w-md transition-colors duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold">Activación de Cuenta</CardTitle>
             <CardDescription>
@@ -63,7 +63,7 @@ export const AccountActivation = () => {
               <>
                 <CheckCircle2 className="h-16 w-16 text-green-500" />
                 <p className="text-center font-medium">{message}</p>
-                <p className="text-sm text-slate-500 text-center">
+                <p className="text-sm text-muted-foreground text-center">
                   Serás redirigido a la página de inicio de sesión en unos segundos.
                 </p>
               </>

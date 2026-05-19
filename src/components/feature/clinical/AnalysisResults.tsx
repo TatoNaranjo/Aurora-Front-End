@@ -7,8 +7,8 @@ interface AnalysisResultsProps {
   globalScore: number;
   maxScore: number;
   symptoms: { name: string; value: number }[];
-  classificationLabel?: string; // e.g. "Depresión" or "Control"
-  trueLabel?: string;           // ground truth label
+  classificationLabel?: string;
+  trueLabel?: string;
 }
 
 export const AnalysisResults = ({ globalScore, maxScore, symptoms, classificationLabel, trueLabel }: AnalysisResultsProps) => {
@@ -16,10 +16,9 @@ export const AnalysisResults = ({ globalScore, maxScore, symptoms, classificatio
   const isControl = classificationLabel === 'Control';
   const hasMismatch = trueLabel && classificationLabel && trueLabel !== classificationLabel;
 
-  // Contextual title, color, and score label
   const title = isControl ? 'Bajo Riesgo de Depresión' : 'Nivel de Depresión';
   const scoreLabel = isControl ? 'Certeza del modelo' : 'Puntuación Global';
-  const primaryColor = isControl ? '#22c55e' : '#ea580c'; // green-500 vs orange-600
+  const primaryColor = isControl ? '#22c55e' : '#ea580c';
 
   const chartData = [
     { name: 'Completed', value: globalScore },
@@ -30,7 +29,7 @@ export const AnalysisResults = ({ globalScore, maxScore, symptoms, classificatio
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <Card className="rounded-xl shadow-sm border-zinc-200">
+      <Card className="rounded-xl shadow-sm border-border transition-colors duration-300">
         <div className="p-6">
           <div className="flex items-center justify-between mb-1">
             <CardTitle className="text-xl font-bold">{title}</CardTitle>
@@ -42,7 +41,7 @@ export const AnalysisResults = ({ globalScore, maxScore, symptoms, classificatio
               </span>
             )}
           </div>
-          <p className="text-xs text-blue-500 font-medium">{scoreLabel}: {globalScore}/{maxScore}</p>
+          <p className="text-xs text-primary font-medium">{scoreLabel}: {globalScore}/{maxScore}</p>
           {hasMismatch && trueLabel && (
             <div className="mt-2 flex items-center gap-2 text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
               <AlertTriangle className="w-3.5 h-3.5" />
@@ -74,10 +73,10 @@ export const AnalysisResults = ({ globalScore, maxScore, symptoms, classificatio
         </CardContent>
       </Card>
 
-      <Card className="rounded-xl shadow-sm border-zinc-200">
+      <Card className="rounded-xl shadow-sm border-border transition-colors duration-300">
         <div className="p-6">
           <CardTitle className="text-xl font-bold mb-1">Síntomas Por Intensidad</CardTitle>
-          <p className="text-xs text-blue-500 font-medium">Distribución de síntomas según su severidad</p>
+          <p className="text-xs text-primary font-medium">Distribución de síntomas según su severidad</p>
         </div>
         <CardContent className="h-[350px] pb-6">
           <ResponsiveContainer width="100%" height="100%">

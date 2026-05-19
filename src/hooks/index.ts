@@ -11,3 +11,4 @@ export * from "./useActivityStatistics";
 export * from "./useValidationDashboard";
 export * from "./useModelTesting";
 export * from "./useReportVerification";
+export * from "./useTheme";

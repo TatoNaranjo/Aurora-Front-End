@@ -31,7 +31,7 @@ export const UserProfile = () => {
 
   return (
     <DefaultLayout>
-      <div className="bg-[#f8faff] min-h-screen font-poppins pb-20">
+      <div className="bg-background min-h-screen font-poppins pb-20 transition-colors duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Main Column */}

@@ -218,19 +218,19 @@ export const ClinicalDiagnostic = () => {
 
   return (
     <DefaultLayout>
-      <div className="bg-[#f8faff] min-h-screen font-poppins pb-10">
+      <div className="bg-background min-h-screen font-poppins pb-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12">
             <div className="space-y-1">
-              <h1 className="text-3xl font-bold text-zinc-900 transition-all">
+              <h1 className="text-3xl font-bold text-foreground transition-all">
                 {isReviewMode ? 'Revisión Manual' : 'Diagnóstico Clínico'}
               </h1>
               {!isPsychologist && (
-                <p className="text-[11px] font-bold text-slate-400 tracking-wide uppercase transition-all animate-in fade-in slide-in-from-left-2">Sistema de Práctica con Casos Simulados</p>
+                <p className="text-[11px] font-bold text-muted-foreground tracking-wide uppercase transition-all animate-in fade-in slide-in-from-left-2">Sistema de Práctica con Casos Simulados</p>
               )}
               {isReviewMode && (
-                <p className="text-[11px] font-bold text-slate-400 tracking-wide uppercase">Evaluación de Desempeño Estudiantil</p>
+                <p className="text-[11px] font-bold text-muted-foreground tracking-wide uppercase">Evaluación de Desempeño Estudiantil</p>
               )}
             </div>
 
@@ -238,7 +238,7 @@ export const ClinicalDiagnostic = () => {
               {isPsychologist && (
                 <button
                   onClick={() => setIsManagingPatients(true)}
-                  className="px-4 py-2 bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 rounded-md text-xs font-bold transition-all shadow-sm"
+                  className="px-4 py-2 bg-card border border-primary/20 text-primary hover:bg-primary/10 rounded-md text-xs font-bold transition-all shadow-sm"
                 >
                   Gestionar Pacientes
                 </button>
@@ -249,7 +249,7 @@ export const ClinicalDiagnostic = () => {
                   {!!reviewId && !isEditing && !isPsychologist && (
                     <button
                       onClick={() => setIsEditing(true)}
-                      className="px-6 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-900 border border-zinc-200 rounded-md text-xs font-bold transition-all shadow-sm"
+                      className="px-6 py-2.5 bg-muted hover:bg-muted/80 text-foreground border border-border rounded-md text-xs font-bold transition-all shadow-sm"
                     >
                       Actualizar
                     </button>
@@ -258,7 +258,7 @@ export const ClinicalDiagnostic = () => {
                     <button
                       onClick={handleSaveCase}
                       disabled={loading || formIsDisabled}
-                      className="px-6 py-2.5 bg-[#637bc4] hover:bg-indigo-500 text-white rounded-md text-xs font-bold transition-all shadow-md shadow-indigo-100 disabled:opacity-50"
+                      className="px-6 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md text-xs font-bold transition-all shadow-md shadow-primary/10 disabled:opacity-50"
                     >
                       {loading ? "Guardando..." : (reviewId ? "Guardar Cambios" : "Guardar Caso")}
                     </button>
@@ -269,7 +269,7 @@ export const ClinicalDiagnostic = () => {
                         const url = await actions.descargarReportePDF(Number(reviewId));
                         if (url) alert("Reporte descargado");
                       }
-                    }} className="px-6 py-2.5 bg-[#7693cc] hover:bg-indigo-400 text-white rounded-md text-xs font-bold transition-all shadow-md shadow-indigo-100">
+                    }} className="px-6 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md text-xs font-bold transition-all shadow-md shadow-primary/10">
                       Exportar Informe
                     </button>
                   )}
@@ -291,7 +291,7 @@ export const ClinicalDiagnostic = () => {
           />
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-400 text-red-700 text-sm">
+            <div className="mb-6 p-4 bg-destructive/10 border-l-4 border-destructive text-destructive text-sm">
               {error}
             </div>
           )}
@@ -387,8 +387,8 @@ export const ClinicalDiagnostic = () => {
                         onViewDetails={() => navigate(`/case-analysis?id=${reviewId || state.currentDiagnosis?.id_diagnostico}`)}
                       />
                       {phase === 'input' && !formIsDisabled && (
-                        <div className="h-20 flex items-center justify-center border-t border-zinc-50">
-                          <p className="text-[10px] text-slate-400 font-medium italic">Completa el análisis clínico antes de ejecutar el sistema.</p>
+                        <div className="h-20 flex items-center justify-center border-t border-border">
+                          <p className="text-[10px] text-muted-foreground font-medium italic">Completa el análisis clínico antes de ejecutar el sistema.</p>
                         </div>
                       )}
                     </>
@@ -494,11 +494,11 @@ export const ClinicalDiagnostic = () => {
               </DialogHeader>
               <div className="py-4 space-y-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-zinc-900 uppercase tracking-wider">Modelo</label>
+                  <label className="text-xs font-bold text-foreground uppercase tracking-wider">Modelo</label>
                   <select
                     value={selectedModelVersion}
                     onChange={(e) => setSelectedModelVersion(e.target.value)}
-                    className="w-full p-2.5 rounded-lg border border-zinc-200 text-xs font-medium text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-100 transition-all"
+                    className="w-full p-2.5 rounded-lg border border-border text-xs font-medium text-foreground bg-background focus:outline-none focus:ring-1 focus:ring-primary/20 transition-all"
                   >
                     <option value="">Usar modelo por defecto (más reciente)</option>
                     {availableModels.map((m) => (
@@ -511,14 +511,14 @@ export const ClinicalDiagnostic = () => {
                 <div className="flex gap-3 pt-2">
                   <button
                     onClick={() => setIsModelModalOpen(false)}
-                    className="flex-1 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-900 rounded-lg text-xs font-bold transition-all"
+                    className="flex-1 py-2.5 bg-muted hover:bg-muted/80 text-foreground rounded-lg text-xs font-bold transition-all"
                   >
                     Cancelar
                   </button>
                   <button
                     onClick={handleConfirmReprocess}
                     disabled={loading}
-                    className="flex-1 py-2.5 bg-[#637bc4] hover:bg-indigo-500 text-white rounded-lg text-xs font-bold transition-all shadow-md shadow-indigo-100 disabled:opacity-50"
+                    className="flex-1 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg text-xs font-bold transition-all shadow-md shadow-primary/10 disabled:opacity-50"
                   >
                     {loading ? "Procesando..." : "Reprocesar"}
                   </button>
@@ -527,8 +527,8 @@ export const ClinicalDiagnostic = () => {
             </DialogContent>
           </Dialog>
 
-          <div className="mt-16 bg-white border border-zinc-100 rounded-xl p-4 flex items-center justify-between">
-            <p className="text-[10px] text-zinc-900 leading-relaxed">
+          <div className="mt-16 bg-card border border-border rounded-xl p-4 flex items-center justify-between transition-colors duration-300">
+            <p className="text-[10px] text-foreground leading-relaxed">
               <span className="font-bold">Uso Académico:</span> Este sistema es únicamente para fines educativos. Los resultados no constituyen diagnósticos médicos reales y no deben usarse para decisiones clínicas en pacientes reales.
             </p>
           </div>

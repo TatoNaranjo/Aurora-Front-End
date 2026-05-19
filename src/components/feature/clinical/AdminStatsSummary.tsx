@@ -11,13 +11,13 @@ interface AdminStatCardProps {
 }
 
 const AdminStatCard = ({ label, value, subtext, icon }: AdminStatCardProps) => (
-  <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-6 flex flex-col justify-between">
+  <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-6 flex flex-col justify-between transition-colors duration-300">
     <div className="flex justify-between items-start mb-4">
       <div className="space-y-1">
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{label}</p>
-        <p className="text-2xl font-bold text-zinc-900">{value}</p>
+        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{label}</p>
+        <p className="text-2xl font-bold text-foreground">{value}</p>
       </div>
-      <div className="p-2 rounded-xl bg-zinc-50 border border-zinc-100 text-zinc-900">
+      <div className="p-2 rounded-xl bg-muted border border-border text-foreground">
         {icon}
       </div>
     </div>
@@ -38,8 +38,8 @@ export const AdminStatsSummary = () => {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {[...Array(4)].map((_, i) => (
-          <Card key={i} className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-6 flex items-center justify-center h-28">
-            <Loader2 className="w-5 h-5 text-zinc-400 animate-spin" />
+          <Card key={i} className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-6 flex items-center justify-center h-28 transition-colors duration-300">
+            <Loader2 className="w-5 h-5 text-muted-foreground animate-spin" />
           </Card>
         ))}
       </div>

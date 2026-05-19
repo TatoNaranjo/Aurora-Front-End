@@ -162,23 +162,23 @@ export const ModelManagementView = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-zinc-100 min-h-[500px] relative">
+    <div className="bg-card p-6 rounded-2xl shadow-sm border border-border min-h-[500px] relative transition-colors duration-300">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div>
-          <h2 className="text-xl font-bold text-zinc-800">Gestión de Modelos (Admin)</h2>
-          <p className="text-sm text-zinc-500">Administra los modelos de IA desplegados en la plataforma</p>
+          <h2 className="text-xl font-bold text-foreground">Gestión de Modelos (Admin)</h2>
+          <p className="text-sm text-muted-foreground">Administra los modelos de IA desplegados en la plataforma</p>
         </div>
         <div className="flex gap-4">
           <button
             onClick={handleSync}
             disabled={loading}
-            className="px-4 py-2 bg-zinc-100 text-zinc-700 rounded-md text-sm font-semibold hover:bg-zinc-200 transition-colors disabled:opacity-50"
+            className="px-4 py-2 bg-muted text-foreground rounded-md text-sm font-semibold hover:bg-muted/80 transition-colors duration-300 disabled:opacity-50"
           >
             {loading ? 'Sincronizando...' : 'Sincronizar Modelos'}
           </button>
           <button
             onClick={() => setShowTrainModal(true)}
-            className="px-4 py-2 bg-[#637bc4] text-white rounded-md text-sm font-semibold hover:bg-indigo-500 transition-colors"
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-semibold hover:bg-primary/90 transition-colors duration-300"
           >
             Entrenar Nuevo
           </button>
@@ -186,30 +186,30 @@ export const ModelManagementView = () => {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-zinc-200 border border-zinc-100 rounded-lg overflow-hidden">
-          <thead className="bg-zinc-50">
+        <table className="min-w-full divide-y divide-border border border-border rounded-lg overflow-hidden">
+          <thead className="bg-muted">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wider">Nombre</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wider">Algoritmo</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wider">Métricas</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wider">Estado</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-zinc-500 uppercase tracking-wider">Producción</th>
-              <th className="px-6 py-3 text-right text-xs font-semibold text-zinc-500 uppercase tracking-wider">Acciones</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Nombre</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Algoritmo</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Métricas</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Estado</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Producción</th>
+              <th className="px-6 py-3 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-zinc-200">
+          <tbody className="bg-card divide-y divide-border">
             {modelos.map(m => (
-              <tr key={m.id_modelo} className="hover:bg-zinc-50/50 transition-colors">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 border-l-4" style={{ borderLeftColor: m.is_active ? '#10b981' : '#ef4444' }}>
+              <tr key={m.id_modelo} className="hover:bg-muted/50 transition-colors">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground border-l-4" style={{ borderLeftColor: m.is_active ? '#10b981' : '#ef4444' }}>
                   {m.nombre_modelo}
-                  <div className="text-[11px] text-zinc-400 font-normal">{new Date(m.fecha_entrenamiento).toLocaleString()}</div>
+                  <div className="text-[11px] text-muted-foreground font-normal">{new Date(m.fecha_entrenamiento).toLocaleString()}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
                   {m.entrenamientos && m.entrenamientos[0]?.algorithm
                     ? m.entrenamientos[0].algorithm.toUpperCase()
                     : "SVM"}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
                   {m.precision ? (m.precision * 100).toFixed(1) + "%" : "N/A"}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
@@ -221,7 +221,7 @@ export const ModelManagementView = () => {
                   {m.is_active ? (
                     <button
                       onClick={() => handleToggleProduction(m)}
-                      className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-[#637bc4] focus:ring-offset-2 ${m.is_production ? 'bg-emerald-500' : 'bg-zinc-200'} transition-colors duration-200 ease-in-out`}
+                      className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${m.is_production ? 'bg-emerald-500' : 'bg-muted'} transition-colors duration-200 ease-in-out`}
                     >
                       <span className="sr-only">Toggle Producción</span>
                       <span
@@ -230,19 +230,19 @@ export const ModelManagementView = () => {
                       />
                     </button>
                   ) : (
-                    <span className="text-zinc-400 text-xs">N/A</span>
+                    <span className="text-muted-foreground text-xs">N/A</span>
                   )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
                   <button
                     onClick={() => navigate(`/reports?modelo=${m.id_modelo}`)}
-                    className="text-[#637bc4] hover:text-indigo-900"
+                    className="text-primary hover:text-primary/80 transition-colors"
                   >
                     Métricas
                   </button>
                   <button
                     onClick={() => handleToggleActive(m)}
-                    className={m.is_active ? "text-red-500 hover:text-red-700" : "text-emerald-500 hover:text-emerald-700"}
+                    className={m.is_active ? "text-destructive hover:text-destructive/80 transition-colors" : "text-emerald-500 hover:text-emerald-700 transition-colors"}
                   >
                     {m.is_active ? 'Desactivar' : 'Recuperar'}
                   </button>
@@ -251,7 +251,7 @@ export const ModelManagementView = () => {
             ))}
             {modelos.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-6 py-10 text-center text-sm text-zinc-500">
+                <td colSpan={6} className="px-6 py-10 text-center text-sm text-muted-foreground">
                   No hay modelos disponibles. Sincroniza o entrena uno nuevo.
                 </td>
               </tr>
@@ -262,26 +262,26 @@ export const ModelManagementView = () => {
 
       {showTrainModal && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 rounded-2xl backdrop-blur-sm">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-md p-6">
             <h3 className="text-xl font-bold mb-4">Entrenar Nuevo Modelo</h3>
-            <p className="text-xs text-zinc-500 mb-6">Configura el nombre y dataset a procesar por el MLCore (FastAPI). Por defecto usará el dataset de consolidado diagnóstico.</p>
+            <p className="text-xs text-muted-foreground mb-6">Configura el nombre y dataset a procesar por el MLCore (FastAPI). Por defecto usará el dataset de consolidado diagnóstico.</p>
 
             <form onSubmit={handleTrain} className="space-y-4 max-h-[70vh] overflow-y-auto pr-2">
               <div>
-                <label className="block text-sm font-medium text-zinc-700 mb-1">Nombre Personalizado (Opcional)</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Nombre Personalizado (Opcional)</label>
                 <input
                   type="text"
                   value={trainConfig.name}
                   onChange={e => setTrainConfig({ ...trainConfig, name: e.target.value })}
                   placeholder="ej. v2_clinical_advanced"
-                  className="w-full px-3 py-2 border border-zinc-200 rounded-md text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                  className="w-full px-3 py-2 border border-border rounded-md text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-700 mb-1">Algoritmo</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Algoritmo</label>
                 <select
-                  className="w-full px-3 py-2 border border-zinc-200 rounded-md text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                  className="w-full px-3 py-2 border border-border rounded-md text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                   value={trainConfig.algorithm}
                   onChange={e => handleAlgorithmChange(e.target.value)}
                 >
@@ -291,15 +291,15 @@ export const ModelManagementView = () => {
                 </select>
               </div>
 
-              <div className="border border-zinc-200 rounded-md p-3 bg-zinc-50/50">
-                <h4 className="text-xs font-semibold text-zinc-600 uppercase tracking-wide mb-3">Hiperparámetros del Algoritmo</h4>
+              <div className="border border-border rounded-md p-3 bg-muted/50">
+                <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Hiperparámetros del Algoritmo</h4>
                 <div className="space-y-3">
                   {trainConfig.algorithm === 'svm' && (
                     <>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">Kernel</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">Kernel</label>
                         <select
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                           value={String(trainConfig.hyperparameters.kernel || 'linear')}
                           onChange={e => updateHyperparam('kernel', e.target.value)}
                         >
@@ -309,7 +309,7 @@ export const ModelManagementView = () => {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">C (Regularización)</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">C (Regularización)</label>
                         <input
                           type="number"
                           step="0.1"
@@ -317,7 +317,7 @@ export const ModelManagementView = () => {
                           max="10"
                           value={Number(trainConfig.hyperparameters.C || 1.0)}
                           onChange={e => updateHyperparam('C', parseFloat(e.target.value))}
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                         />
                       </div>
                       <div className="flex items-center gap-2">
@@ -325,40 +325,40 @@ export const ModelManagementView = () => {
                           type="checkbox"
                           checked={Boolean(trainConfig.hyperparameters.probability)}
                           onChange={e => updateHyperparam('probability', e.target.checked)}
-                          className="h-4 w-4 text-[#637bc4] focus:ring-[#637bc4] border-zinc-300 rounded"
+                          className="h-4 w-4 text-primary focus:ring-primary border-border rounded transition-colors"
                         />
-                        <label className="text-xs text-zinc-600">Probability</label>
+                        <label className="text-xs text-muted-foreground">Probability</label>
                       </div>
                     </>
                   )}
                   {trainConfig.algorithm === 'random_forest' && (
                     <>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">N Estimators</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">N Estimators</label>
                         <input
                           type="number"
                           min="10"
                           max="1000"
                           value={Number(trainConfig.hyperparameters.n_estimators || 200)}
                           onChange={e => updateHyperparam('n_estimators', parseInt(e.target.value))}
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">Max Depth</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">Max Depth</label>
                         <input
                           type="number"
                           min="1"
                           placeholder="null (sin límite)"
                           value={trainConfig.hyperparameters.max_depth === null || trainConfig.hyperparameters.max_depth === undefined ? '' : Number(trainConfig.hyperparameters.max_depth)}
                           onChange={e => updateHyperparam('max_depth', e.target.value === '' ? null : parseInt(e.target.value))}
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">Class Weight</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">Class Weight</label>
                         <select
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                           value={String(trainConfig.hyperparameters.class_weight || 'balanced')}
                           onChange={e => updateHyperparam('class_weight', e.target.value)}
                         >
@@ -372,18 +372,18 @@ export const ModelManagementView = () => {
                   {trainConfig.algorithm === 'xgboost' && (
                     <>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">Max Depth</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">Max Depth</label>
                         <input
                           type="number"
                           min="1"
                           max="20"
                           value={Number(trainConfig.hyperparameters.max_depth || 6)}
                           onChange={e => updateHyperparam('max_depth', parseInt(e.target.value))}
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">Learning Rate (Tasa de Aprendizaje)</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">Learning Rate (Tasa de Aprendizaje)</label>
                         <input
                           type="number"
                           step="0.01"
@@ -391,24 +391,24 @@ export const ModelManagementView = () => {
                           max="1"
                           value={Number(trainConfig.hyperparameters.learning_rate || 0.1)}
                           onChange={e => updateHyperparam('learning_rate', parseFloat(e.target.value))}
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">N Estimators</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">N Estimators</label>
                         <input
                           type="number"
                           min="10"
                           max="1000"
                           value={Number(trainConfig.hyperparameters.n_estimators || 100)}
                           onChange={e => updateHyperparam('n_estimators', parseInt(e.target.value))}
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">Eval Metric</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">Eval Metric</label>
                         <select
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                           value={String(trainConfig.hyperparameters.eval_metric || 'logloss')}
                           onChange={e => updateHyperparam('eval_metric', e.target.value)}
                         >
@@ -422,7 +422,7 @@ export const ModelManagementView = () => {
                   {trainConfig.algorithm === 'naive_bayes' && (
                     <>
                       <div>
-                        <label className="block text-xs font-medium text-zinc-600 mb-1">Alpha (Smoothing)</label>
+                        <label className="block text-xs font-medium text-muted-foreground mb-1">Alpha (Smoothing)</label>
                         <input
                           type="number"
                           step="0.1"
@@ -430,7 +430,7 @@ export const ModelManagementView = () => {
                           max="10"
                           value={Number(trainConfig.hyperparameters.alpha || 1.0)}
                           onChange={e => updateHyperparam('alpha', parseFloat(e.target.value))}
-                          className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                          className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                         />
                       </div>
                     </>
@@ -438,13 +438,13 @@ export const ModelManagementView = () => {
                 </div>
               </div>
 
-              <div className="border border-zinc-200 rounded-md p-3 bg-zinc-50/50">
-                <h4 className="text-xs font-semibold text-zinc-600 uppercase tracking-wide mb-3">Pipeline General (TF-IDF & Validación)</h4>
+              <div className="border border-border rounded-md p-3 bg-muted/50">
+                <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Pipeline General (TF-IDF & Validación)</h4>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-medium text-zinc-600 mb-1">N-Gram Range</label>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1">N-Gram Range</label>
                     <select
-                      className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                      className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                       value={String((trainConfig.hyperparameters.ngram_range as number[] || [1,3]).join(','))}
                       onChange={e => {
                         const [a, b] = e.target.value.split(',').map(Number);
@@ -458,17 +458,17 @@ export const ModelManagementView = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-zinc-600 mb-1">Min DF</label>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1">Min DF</label>
                     <input
                       type="number"
                       min="1"
                       value={Number(trainConfig.hyperparameters.min_df || 4)}
                       onChange={e => updateHyperparam('min_df', parseInt(e.target.value))}
-                      className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                      className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-zinc-600 mb-1">Max DF</label>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1">Max DF</label>
                     <input
                       type="number"
                       step="0.1"
@@ -476,38 +476,38 @@ export const ModelManagementView = () => {
                       max="1.0"
                       value={Number(trainConfig.hyperparameters.max_df || 0.8)}
                       onChange={e => updateHyperparam('max_df', parseFloat(e.target.value))}
-                      className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                      className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-zinc-600 mb-1">CV Folds</label>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1">CV Folds</label>
                     <input
                       type="number"
                       min="2"
                       max="10"
                       value={Number(trainConfig.hyperparameters.cv_folds || 5)}
                       onChange={e => updateHyperparam('cv_folds', parseInt(e.target.value))}
-                      className="w-full px-2 py-1.5 border border-zinc-200 rounded text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                      className="w-full px-2 py-1.5 border border-border rounded text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                     />
                   </div>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-700 mb-1">Subir Dataset Nuevo (CSV)</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Subir Dataset Nuevo (CSV)</label>
                 <input
                   type="file"
                   accept=".csv,.zip"
                   onChange={e => setTrainConfig({ ...trainConfig, file: e.target.files ? e.target.files[0] : null, dataset: '' })}
-                  className="w-full text-sm text-zinc-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-[#637bc4] hover:file:bg-indigo-100"
+                  className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 transition-colors"
                 />
-                <p className="text-[10px] text-zinc-400 mt-1">Opcional. Dará precedencia sobre la selección inferior si se provee.</p>
+                <p className="text-[10px] text-muted-foreground mt-1">Opcional. Dará precedencia sobre la selección inferior si se provee.</p>
               </div>
 
               <div className={trainConfig.file ? "opacity-40 pointer-events-none mt-4" : "mt-4"}>
-                <label className="block text-sm font-medium text-zinc-700 mb-1">O selecciona dataset existente</label>
+                <label className="block text-sm font-medium text-foreground mb-1">O selecciona dataset existente</label>
                 <select
-                  className="w-full px-3 py-2 border border-zinc-200 rounded-md text-sm focus:ring-2 focus:ring-[#637bc4] focus:outline-none"
+                  className="w-full px-3 py-2 border border-border rounded-md text-sm focus:ring-2 focus:ring-primary focus:outline-none transition-colors duration-300"
                   value={trainConfig.dataset}
                   onChange={e => setTrainConfig({ ...trainConfig, dataset: e.target.value })}
                   disabled={!!trainConfig.file}
@@ -516,14 +516,14 @@ export const ModelManagementView = () => {
                   <option value="consolidado_etiquetado.csv">consolidado_etiquetado.csv</option>
                   <option value="consolidado_historia_clinica.csv">consolidado_historia_clinica.csv</option>
                 </select>
-                <p className="text-[10px] text-zinc-400 mt-2">Puedes seleccionar un dataset diferente si está montado en /Prototipe.</p>
+                <p className="text-[10px] text-muted-foreground mt-2">Puedes seleccionar un dataset diferente si está montado en /Prototipe.</p>
               </div>
 
               <div className="flex justify-end gap-3 mt-8">
-                <button type="button" onClick={() => setShowTrainModal(false)} className="px-4 py-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 border border-zinc-200 hover:bg-zinc-50 rounded-md transition-colors">
+                <button type="button" onClick={() => setShowTrainModal(false)} className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border border-border hover:bg-muted rounded-md transition-colors duration-300">
                   Cancelar
                 </button>
-                <button type="submit" disabled={loading} className="px-4 py-2 text-sm font-medium text-white bg-[#637bc4] hover:bg-indigo-500 disabled:opacity-50 rounded-md transition-colors shadow-sm">
+                <button type="submit" disabled={loading} className="px-4 py-2 text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 disabled:opacity-50 rounded-md transition-colors duration-300 shadow-sm">
                   {loading ? 'Iniciando...' : 'Iniciar Entrenamiento'}
                 </button>
               </div>

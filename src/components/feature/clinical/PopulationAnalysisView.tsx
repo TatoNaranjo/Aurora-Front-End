@@ -14,7 +14,7 @@ export const PopulationAnalysisView = ({ data, loading }: PopulationAnalysisView
   if (loading || !data) {
     return (
       <div className="flex justify-center items-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-indigo-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
       </div>
     );
   }
@@ -22,9 +22,9 @@ export const PopulationAnalysisView = ({ data, loading }: PopulationAnalysisView
   return (
     <div className="space-y-12 animate-in fade-in duration-700">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 flex flex-col h-[400px]">
-          <h4 className="text-sm font-bold text-zinc-900 mb-6">Tendencias Por Grupo Etario</h4>
-          <div className="flex-grow flex items-center justify-center bg-zinc-50 rounded-xl border border-dashed border-zinc-200 p-4">
+        <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 flex flex-col h-[400px] transition-colors duration-300">
+          <h4 className="text-sm font-bold text-foreground mb-6">Tendencias Por Grupo Etario</h4>
+          <div className="flex-grow flex items-center justify-center bg-muted rounded-xl border border-dashed border-border p-4">
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={data.age_distribution}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e4e4e7" />
@@ -37,9 +37,9 @@ export const PopulationAnalysisView = ({ data, loading }: PopulationAnalysisView
           </div>
         </Card>
 
-        <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 flex flex-col h-[400px]">
-          <h4 className="text-sm font-bold text-zinc-900 mb-6">Distribución Por Sexo</h4>
-          <div className="flex-grow flex flex-col items-center justify-center bg-zinc-50 rounded-xl border border-dashed border-zinc-200 p-4 relative">
+        <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 flex flex-col h-[400px] transition-colors duration-300">
+          <h4 className="text-sm font-bold text-foreground mb-6">Distribución Por Sexo</h4>
+          <div className="flex-grow flex flex-col items-center justify-center bg-muted rounded-xl border border-dashed border-border p-4 relative">
             <div className="w-full h-[200px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -65,7 +65,7 @@ export const PopulationAnalysisView = ({ data, loading }: PopulationAnalysisView
               {data.sex_distribution.map((entry, index) => (
                 <div key={entry.sexo} className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[index % COLORS.length] }} />
-                  <span className="text-slate-500 uppercase">{entry.sexo} ({entry.count})</span>
+                  <span className="text-muted-foreground uppercase">{entry.sexo} ({entry.count})</span>
                 </div>
               ))}
             </div>
@@ -73,38 +73,38 @@ export const PopulationAnalysisView = ({ data, loading }: PopulationAnalysisView
         </Card>
       </div>
 
-      <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8">
+      <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 transition-colors duration-300">
         <CardHeader className="p-0 mb-8">
-          <CardTitle className="text-2xl font-bold text-zinc-900">Casos Anonimizados - Vista de Investigación</CardTitle>
-          <p className="text-[10px] text-slate-400 font-medium">Muestra de {data.anonymized_cases.length} casos recientes omitiendo información identificable (HIPAA compl.)</p>
+          <CardTitle className="text-2xl font-bold text-foreground">Casos Anonimizados - Vista de Investigación</CardTitle>
+          <p className="text-[10px] text-muted-foreground font-medium">Muestra de {data.anonymized_cases.length} casos recientes omitiendo información identificable (HIPAA compl.)</p>
         </CardHeader>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-zinc-50">
-                <th className="pb-4 text-[10px] font-bold text-zinc-900 uppercase tracking-widest">ID Anónimo</th>
-                <th className="pb-4 text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Grupo Etario</th>
-                <th className="pb-4 text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Sexo</th>
-                <th className="pb-4 text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Certeza IA</th>
-                <th className="pb-4 text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Clasificación IA</th>
+              <tr className="border-b border-border">
+                <th className="pb-4 text-[10px] font-bold text-foreground uppercase tracking-widest">ID Anónimo</th>
+                <th className="pb-4 text-[10px] font-bold text-foreground uppercase tracking-widest">Grupo Etario</th>
+                <th className="pb-4 text-[10px] font-bold text-foreground uppercase tracking-widest">Sexo</th>
+                <th className="pb-4 text-[10px] font-bold text-foreground uppercase tracking-widest">Certeza IA</th>
+                <th className="pb-4 text-[10px] font-bold text-foreground uppercase tracking-widest">Clasificación IA</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-50">
+            <tbody className="divide-y divide-border">
               {data.anonymized_cases.map((row, i) => (
-                <tr key={i} className="hover:bg-zinc-50/50 transition-colors">
-                  <td className="py-4 text-[10px] font-bold text-zinc-900">{row.id}</td>
-                  <td className="py-4 text-[10px] font-medium text-slate-500">{row.age}</td>
-                  <td className="py-4 text-[10px] font-medium text-slate-500">{row.sex}</td>
-                  <td className="py-4 text-[10px] font-bold text-indigo-600">{row.score}</td>
-                  <td className="py-4 text-[10px] font-bold text-zinc-900">
-                    <span className="px-2 py-1 bg-slate-100 rounded-md border border-slate-200">{row.class}</span>
+                <tr key={i} className="hover:bg-muted/50 transition-colors">
+                  <td className="py-4 text-[10px] font-bold text-foreground">{row.id}</td>
+                  <td className="py-4 text-[10px] font-medium text-muted-foreground">{row.age}</td>
+                  <td className="py-4 text-[10px] font-medium text-muted-foreground">{row.sex}</td>
+                  <td className="py-4 text-[10px] font-bold text-primary">{row.score}</td>
+                  <td className="py-4 text-[10px] font-bold text-foreground">
+                    <span className="px-2 py-1 bg-muted rounded-md border border-border">{row.class}</span>
                   </td>
                 </tr>
               ))}
               {data.anonymized_cases.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="py-8 text-center text-xs text-slate-400">No hay casos registrados aún</td>
+                  <td colSpan={5} className="py-8 text-center text-xs text-muted-foreground">No hay casos registrados aún</td>
                 </tr>
               )}
             </tbody>

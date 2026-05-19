@@ -135,9 +135,9 @@ export const ModelReports = () => {
       label: "MODELO FUNCIONAL CON RESERVAS",
     },
     critical: {
-      bg: "bg-red-50",
-      border: "border-red-200",
-      text: "text-red-800",
+      bg: "bg-destructive/10",
+      border: "border-destructive/20",
+      text: "text-destructive",
       icon: XCircle,
       label: "MODELO NO RECOMENDADO PARA PRODUCCION",
     },
@@ -191,7 +191,7 @@ export const ModelReports = () => {
 
   return (
     <DefaultLayout>
-      <div className="bg-[#f8faff] min-h-screen font-poppins pb-20 print:bg-white">
+      <div className="bg-background min-h-screen font-poppins pb-20 print:bg-white transition-colors duration-300">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6 print:hidden">
@@ -246,14 +246,14 @@ export const ModelReports = () => {
               <div className="border-b pb-6 mb-6">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+                    <h2 className="text-2xl font-bold tracking-tight text-foreground">
                       Reporte de Rendimiento del Modelo
                     </h2>
-                    <p className="text-slate-500 font-mono mt-2 text-sm bg-slate-100 inline-block px-3 py-1 rounded">
+                    <p className="text-muted-foreground font-mono mt-2 text-sm bg-muted inline-block px-3 py-1 rounded">
                       Ref: {selectedModelo.nombre_modelo}
                     </p>
                   </div>
-                  <div className="text-right text-sm text-slate-500">
+                  <div className="text-right text-sm text-muted-foreground">
                     <div className="flex items-center gap-2 justify-end">
                       <Calendar className="w-4 h-4" />
                       <span>
@@ -310,7 +310,7 @@ export const ModelReports = () => {
                               ? "text-emerald-700"
                               : item.level === "warning"
                                 ? "text-amber-700"
-                                : "text-red-700"
+                                : "text-destructive"
                           }`}
                         >
                           {item.level === "good" && (
@@ -332,9 +332,9 @@ export const ModelReports = () => {
                   {latestEntrenamiento.hyperparameters &&
                     Object.keys(latestEntrenamiento.hyperparameters).length >
                       0 && (
-                      <div className="border rounded-lg p-6 bg-slate-50/50">
+                      <div className="border border-border rounded-lg p-6 bg-muted/50 transition-colors duration-300">
                         <div className="flex items-center gap-2 mb-4">
-                          <Database className="w-5 h-5 text-slate-600" />
+                          <Database className="w-5 h-5 text-muted-foreground" />
                           <h3 className="text-lg font-semibold">
                             Configuracion del Entrenamiento
                           </h3>
@@ -345,12 +345,12 @@ export const ModelReports = () => {
                           ).map(([key, value]) => (
                             <div
                               key={key}
-                              className="bg-white border rounded-md p-3"
+                              className="bg-card border border-border rounded-md p-3 transition-colors duration-300"
                             >
-                              <p className="text-xs text-slate-500 uppercase tracking-wide">
+                              <p className="text-xs text-muted-foreground uppercase tracking-wide">
                                 {key}
                               </p>
-                              <p className="text-sm font-mono font-medium text-slate-800 mt-1">
+                              <p className="text-sm font-mono font-medium text-foreground mt-1">
                                 {Array.isArray(value)
                                   ? `[${value.join(", ")}]`
                                   : String(value)}
@@ -364,36 +364,36 @@ export const ModelReports = () => {
                   {/* Metricas Detalladas */}
                   <div>
                     <div className="flex items-center gap-2 mb-4">
-                      <BarChart3 className="w-5 h-5 text-slate-600" />
+                      <BarChart3 className="w-5 h-5 text-muted-foreground" />
                       <h3 className="text-lg font-semibold">
                         Metricas de Rendimiento
                       </h3>
                     </div>
                     <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">
-                      <Card className="shadow-sm border-slate-200">
+                      <Card className="shadow-sm border-border transition-colors duration-300">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-xs font-medium text-slate-600">
+                          <CardTitle className="text-xs font-medium text-muted-foreground">
                             Accuracy
                           </CardTitle>
-                          <Award className="h-4 w-4 text-slate-400" />
+                          <Award className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                          <div className="text-2xl font-bold text-slate-900">
+                          <div className="text-2xl font-bold text-foreground">
                             {latestEntrenamiento.precision
                               ? `${(latestEntrenamiento.precision * 100).toFixed(1)}%`
                               : "N/A"}
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="shadow-sm border-slate-200">
+                      <Card className="shadow-sm border-border transition-colors duration-300">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-xs font-medium text-slate-600">
+                          <CardTitle className="text-xs font-medium text-muted-foreground">
                             Precision
                           </CardTitle>
-                          <Target className="h-4 w-4 text-slate-400" />
+                          <Target className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                          <div className="text-2xl font-bold text-slate-900">
+                          <div className="text-2xl font-bold text-foreground">
                             {latestEntrenamiento.analysis_metrics &&
                             typeof latestEntrenamiento.analysis_metrics
                               .cv_precision === "number"
@@ -404,45 +404,45 @@ export const ModelReports = () => {
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="shadow-sm border-slate-200">
+                      <Card className="shadow-sm border-border transition-colors duration-300">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-xs font-medium text-slate-600">
+                          <CardTitle className="text-xs font-medium text-muted-foreground">
                             Recall
                           </CardTitle>
-                          <Activity className="h-4 w-4 text-slate-400" />
+                          <Activity className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                          <div className="text-2xl font-bold text-slate-900">
+                          <div className="text-2xl font-bold text-foreground">
                             {latestEntrenamiento.sensibilidad
                               ? `${(latestEntrenamiento.sensibilidad * 100).toFixed(1)}%`
                               : "N/A"}
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="shadow-sm border-slate-200">
+                      <Card className="shadow-sm border-border transition-colors duration-300">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-xs font-medium text-slate-600">
+                          <CardTitle className="text-xs font-medium text-muted-foreground">
                             F1-Score
                           </CardTitle>
-                          <TrendingUp className="h-4 w-4 text-slate-400" />
+                          <TrendingUp className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                          <div className="text-2xl font-bold text-slate-900">
+                          <div className="text-2xl font-bold text-foreground">
                             {latestEntrenamiento.f_score
                               ? `${(latestEntrenamiento.f_score * 100).toFixed(1)}%`
                               : "N/A"}
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="shadow-sm border-slate-200">
+                      <Card className="shadow-sm border-border transition-colors duration-300">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-xs font-medium text-slate-600">
+                          <CardTitle className="text-xs font-medium text-muted-foreground">
                             Specificity
                           </CardTitle>
-                          <Shield className="h-4 w-4 text-slate-400" />
+                          <Shield className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                          <div className="text-2xl font-bold text-slate-900">
+                          <div className="text-2xl font-bold text-foreground">
                             {latestEntrenamiento.analysis_metrics &&
                             typeof latestEntrenamiento.analysis_metrics
                               .specificity === "number"
@@ -451,15 +451,15 @@ export const ModelReports = () => {
                           </div>
                         </CardContent>
                       </Card>
-                      <Card className="shadow-sm border-slate-200">
+                      <Card className="shadow-sm border-border transition-colors duration-300">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                          <CardTitle className="text-xs font-medium text-slate-600">
+                          <CardTitle className="text-xs font-medium text-muted-foreground">
                             AUC-ROC
                           </CardTitle>
-                          <Layers className="h-4 w-4 text-slate-400" />
+                          <Layers className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                          <div className="text-2xl font-bold text-slate-900">
+                          <div className="text-2xl font-bold text-foreground">
                             {latestEntrenamiento.analysis_metrics &&
                             typeof latestEntrenamiento.analysis_metrics
                               .roc_auc === "number"
@@ -473,9 +473,9 @@ export const ModelReports = () => {
 
                   {/* Metricas Adicionales */}
                   {latestEntrenamiento.analysis_metrics && (
-                    <div className="border rounded-lg p-6 bg-slate-50/50">
+                    <div className="border border-border rounded-lg p-6 bg-muted/50 transition-colors duration-300">
                       <div className="flex items-center gap-2 mb-4">
-                        <FileText className="w-5 h-5 text-slate-600" />
+                        <FileText className="w-5 h-5 text-muted-foreground" />
                         <h3 className="text-lg font-semibold">
                           Metricas Adicionales
                         </h3>
@@ -483,11 +483,11 @@ export const ModelReports = () => {
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {typeof latestEntrenamiento.analysis_metrics
                           .pr_auc === "number" && (
-                          <div className="bg-white border rounded-md p-3">
-                            <p className="text-xs text-slate-500 uppercase tracking-wide">
+                          <div className="bg-card border border-border rounded-md p-3 transition-colors duration-300">
+                            <p className="text-xs text-muted-foreground uppercase tracking-wide">
                               AUC-PR
                             </p>
-                            <p className="text-sm font-mono font-medium text-slate-800 mt-1">
+                            <p className="text-sm font-mono font-medium text-foreground mt-1">
                               {(
                                 latestEntrenamiento.analysis_metrics
                                   .pr_auc as number
@@ -497,11 +497,11 @@ export const ModelReports = () => {
                         )}
                         {typeof latestEntrenamiento.analysis_metrics
                           .brier_score === "number" && (
-                          <div className="bg-white border rounded-md p-3">
-                            <p className="text-xs text-slate-500 uppercase tracking-wide">
+                          <div className="bg-card border border-border rounded-md p-3 transition-colors duration-300">
+                            <p className="text-xs text-muted-foreground uppercase tracking-wide">
                               Brier Score
                             </p>
-                            <p className="text-sm font-mono font-medium text-slate-800 mt-1">
+                            <p className="text-sm font-mono font-medium text-foreground mt-1">
                               {(
                                 latestEntrenamiento.analysis_metrics
                                   .brier_score as number
@@ -511,11 +511,11 @@ export const ModelReports = () => {
                         )}
                         {typeof latestEntrenamiento.analysis_metrics
                           .true_positives === "number" && (
-                          <div className="bg-white border rounded-md p-3">
-                            <p className="text-xs text-slate-500 uppercase tracking-wide">
+                          <div className="bg-card border border-border rounded-md p-3 transition-colors duration-300">
+                            <p className="text-xs text-muted-foreground uppercase tracking-wide">
                               Verdaderos Positivos
                             </p>
-                            <p className="text-sm font-mono font-medium text-slate-800 mt-1">
+                            <p className="text-sm font-mono font-medium text-foreground mt-1">
                               {String(
                                 latestEntrenamiento.analysis_metrics
                                   .true_positives
@@ -525,11 +525,11 @@ export const ModelReports = () => {
                         )}
                         {typeof latestEntrenamiento.analysis_metrics
                           .false_negatives === "number" && (
-                          <div className="bg-white border rounded-md p-3">
-                            <p className="text-xs text-slate-500 uppercase tracking-wide">
+                          <div className="bg-card border border-border rounded-md p-3 transition-colors duration-300">
+                            <p className="text-xs text-muted-foreground uppercase tracking-wide">
                               Falsos Negativos
                             </p>
-                            <p className="text-sm font-mono font-medium text-slate-800 mt-1">
+                            <p className="text-sm font-mono font-medium text-foreground mt-1">
                               {String(
                                 latestEntrenamiento.analysis_metrics
                                   .false_negatives
@@ -544,7 +544,7 @@ export const ModelReports = () => {
                   {/* Galeria de Visualizaciones */}
                   <div>
                     <div className="flex items-center gap-2 mb-4">
-                      <BarChart3 className="w-5 h-5 text-slate-600" />
+                      <BarChart3 className="w-5 h-5 text-muted-foreground" />
                       <h3 className="text-lg font-semibold">
                         Visualizaciones del Entrenamiento
                       </h3>
@@ -558,14 +558,14 @@ export const ModelReports = () => {
                           return (
                             <Card
                               key={g.id_grafica}
-                              className="overflow-hidden shadow-sm flex flex-col h-full border-slate-200 print:break-inside-avoid"
+                              className="overflow-hidden shadow-sm flex flex-col h-full border-border print:break-inside-avoid transition-colors duration-300"
                             >
-                              <CardHeader className="bg-slate-50 py-4 border-b">
-                                <CardTitle className="text-center text-sm font-semibold text-slate-700">
+                              <CardHeader className="bg-muted py-4 border-b transition-colors duration-300">
+                                <CardTitle className="text-center text-sm font-semibold text-muted-foreground">
                                   {readableName}
                                 </CardTitle>
                               </CardHeader>
-                              <CardContent className="flex-1 flex items-center justify-center p-0 bg-white">
+                              <CardContent className="flex-1 flex items-center justify-center p-0 bg-card transition-colors duration-300">
                                 <img
                                   src={getGraphicUrl(g)}
                                   alt={readableName}
@@ -578,7 +578,7 @@ export const ModelReports = () => {
                         })}
                       </div>
                     ) : (
-                      <div className="text-center p-8 bg-slate-50 border border-dashed rounded-lg text-slate-500">
+                      <div className="text-center p-8 bg-muted border border-dashed border-border rounded-lg text-muted-foreground transition-colors duration-300">
                         No se han registrado graficas para este modelo.
                       </div>
                     )}

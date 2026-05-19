@@ -9,22 +9,22 @@ export const CaseStatsSidebar = () => {
   ];
 
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 h-fit">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 h-fit transition-colors duration-300">
       <CardHeader className="p-0 mb-6">
-        <CardTitle className="text-xl font-bold text-zinc-900">Estadísticas</CardTitle>
-        <p className="text-[10px] text-slate-400 font-medium">Resumen de actividad reciente</p>
+        <CardTitle className="text-xl font-bold text-foreground">Estadísticas</CardTitle>
+        <p className="text-[10px] text-muted-foreground font-medium">Resumen de actividad reciente</p>
       </CardHeader>
 
       <CardContent className="p-0 flex flex-col gap-6">
         {stats.map((stat, index) => (
           <div key={index} className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="text-zinc-900">
+              <div className="text-foreground">
                 {stat.icon}
               </div>
-              <span className="text-[11px] font-bold text-zinc-900 tracking-tight">{stat.label}</span>
+              <span className="text-[11px] font-bold text-foreground tracking-tight">{stat.label}</span>
             </div>
-            <span className="text-sm font-bold text-zinc-900">{stat.value}</span>
+            <span className="text-sm font-bold text-foreground">{stat.value}</span>
           </div>
         ))}
       </CardContent>

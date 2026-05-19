@@ -56,7 +56,7 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
           <CardTitle className="text-black text-2xl font-bold mb-2 text-center">
             Contraseña Restablecida
           </CardTitle>
-          <CardDescription className="text-slate-500 text-sm font-normal text-center">
+          <CardDescription className="text-muted-foreground text-sm font-normal text-center">
             Tu contraseña ha sido actualizada exitosamente. Ya puedes iniciar sesión.
           </CardDescription>
         </CardHeader>
@@ -75,7 +75,7 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
         <CardTitle className="justify-center text-black text-3xl font-bold mb-1 text-center">
           Nueva Contraseña
         </CardTitle>
-        <CardDescription className="justify-center text-slate-500 text-sm font-normal text-center">
+        <CardDescription className="justify-center text-muted-foreground text-sm font-normal text-center">
           Ingresa tu nueva contraseña para acceder a la plataforma
         </CardDescription>
       </CardHeader>

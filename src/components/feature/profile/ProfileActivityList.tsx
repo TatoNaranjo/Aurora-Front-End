@@ -51,31 +51,31 @@ export const ProfileActivityList = () => {
 
   const getStatusStyles = (status: string) => {
     switch (status) {
-      case 'Completado': return "border-zinc-200 text-zinc-900 bg-white";
-      case 'Validado': return "border-indigo-100 text-indigo-400 bg-indigo-50/30";
-      case 'En Revisión': return "border-orange-100 text-orange-400 bg-orange-50/30";
+      case 'Completado': return "border-border text-foreground bg-card";
+      case 'Validado': return "border-primary/20 text-primary bg-primary/10";
+      case 'En Revisión': return "border-primary/20 text-primary bg-primary/10";
       default: return "";
     }
   };
 
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden mt-8 p-8">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden mt-8 p-8 transition-colors duration-300">
       <CardHeader className="p-0 mb-8">
-        <CardTitle className="text-xl font-bold text-zinc-900">Actividad Reciente</CardTitle>
-        <p className="text-xs text-slate-400 font-medium leading-relaxed">
+        <CardTitle className="text-xl font-bold text-foreground">Actividad Reciente</CardTitle>
+        <p className="text-xs text-muted-foreground font-medium leading-relaxed">
           Revisa tus últimas acciones dentro de la plataforma y el estado actual de los casos clínicos que supervisas.
         </p>
       </CardHeader>
       <CardContent className="p-0 flex flex-col gap-4">
         {activities.map((activity) => (
-          <div key={activity.id} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-50 hover:bg-zinc-50/50 transition-all">
-            <div className="bg-zinc-50 p-3 rounded-xl text-zinc-900 border border-zinc-100">
+          <div key={activity.id} className="flex items-center gap-4 p-4 rounded-xl border border-border hover:bg-muted/50 transition-all">
+            <div className="bg-muted p-3 rounded-xl text-foreground border border-border">
               {activity.icon}
             </div>
             <div className="flex-grow">
-              <h4 className="text-sm font-bold text-zinc-900">{activity.title}</h4>
-              <p className="text-[10px] text-slate-400 font-medium">{activity.description}</p>
-              <p className="text-[8px] text-slate-300 font-bold uppercase mt-1">🕒 {activity.time}</p>
+              <h4 className="text-sm font-bold text-foreground">{activity.title}</h4>
+              <p className="text-[10px] text-muted-foreground font-medium">{activity.description}</p>
+              <p className="text-[8px] text-muted-foreground font-bold uppercase mt-1">🕒 {activity.time}</p>
             </div>
             <div className={`px-4 py-1.5 rounded-full border text-[10px] font-bold ${getStatusStyles(activity.status)}`}>
               {activity.status}
@@ -85,7 +85,7 @@ export const ProfileActivityList = () => {
 
         <button
           onClick={() => navigate("/recent-activity")}
-          className="w-fit mx-auto mt-6 px-12 py-3 bg-[#637bc4] hover:bg-indigo-500 text-white rounded-lg shadow-lg shadow-indigo-100 text-xs font-bold transition-all"
+          className="w-fit mx-auto mt-6 px-12 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg shadow-lg shadow-primary/10 text-xs font-bold transition-all"
         >
           Ver Todo el Historial
         </button>

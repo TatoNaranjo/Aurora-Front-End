@@ -66,19 +66,19 @@ export const ResearchingPanel = () => {
 
   return (
     <DefaultLayout>
-      <div className="bg-[#f8faff] min-h-screen font-poppins pb-10">
+      <div className="bg-background min-h-screen font-poppins pb-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 
           {/* Header */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="space-y-1">
-              <h1 className="text-3xl font-bold text-zinc-900">Panel de Investigación</h1>
-              <p className="text-[11px] font-bold text-slate-400 tracking-wide uppercase">Análisis Poblacional y Modelos de Machine Learning</p>
+              <h1 className="text-3xl font-bold text-foreground">Panel de Investigación</h1>
+              <p className="text-[11px] font-bold text-muted-foreground tracking-wide uppercase">Análisis Poblacional y Modelos de Machine Learning</p>
             </div>
 
             <button
               onClick={scrollToExport}
-              className="px-8 py-2.5 bg-[#637bc4] hover:bg-indigo-500 text-white rounded-md text-xs font-bold transition-all shadow-md shadow-indigo-100 uppercase tracking-widest"
+              className="px-8 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md text-xs font-bold transition-all shadow-md shadow-primary/10 uppercase tracking-widest"
             >
               Exportar Datos
             </button>

@@ -25,24 +25,24 @@ const getIntensityPercent = (intensity?: string): number => {
 const formatSymptomName = (name: string): string =>
   name ? name.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase()) : "Desconocido";
 
-const SymptomIntensity = ({ label, intensity, highlight }: SymptomIntensityProps) => (
+  const SymptomIntensity = ({ label, intensity, highlight }: SymptomIntensityProps) => (
   <div className="flex items-center justify-between gap-8 py-2">
     <div className="flex items-center gap-3 min-w-[180px]">
       {highlight ? (
-        <AlertTriangle className="w-4 h-4 text-zinc-900" />
+        <AlertTriangle className="w-4 h-4 text-foreground" />
       ) : (
-        <Check className="w-4 h-4 text-zinc-900" />
+        <Check className="w-4 h-4 text-foreground" />
       )}
-      <span className="text-[11px] font-bold text-zinc-900">{label}</span>
+      <span className="text-[11px] font-bold text-foreground">{label}</span>
     </div>
     <div className="flex-grow flex items-center gap-4">
-      <div className="h-1.5 w-full bg-indigo-50/50 rounded-full overflow-hidden border border-indigo-100/30">
+      <div className="h-1.5 w-full bg-primary/5 rounded-full overflow-hidden border border-primary/10">
         <div
-          className="h-full bg-indigo-400 rounded-full"
+          className="h-full bg-primary rounded-full"
           style={{ width: `${intensity}%` }}
         />
       </div>
-      <span className="text-[9px] font-bold text-slate-300 w-8">{intensity}%</span>
+      <span className="text-[9px] font-bold text-muted-foreground w-8">{intensity}%</span>
     </div>
   </div>
 );
@@ -64,26 +64,26 @@ export const MLAnalysisResults = ({
   const dsm5: Record<string, unknown> = clasificacion.ml_dsm5_evaluacion as Record<string, unknown> || {};
 
   return (
-    <Card className="rounded-2xl border-indigo-100/50 shadow-sm bg-white overflow-hidden p-8 mt-8 border-2">
+    <Card className="rounded-2xl border-primary/50 shadow-sm bg-card overflow-hidden p-8 mt-8 border-2 transition-colors duration-300">
       <CardHeader className="p-0 mb-6">
-        <CardTitle className="text-xl font-bold text-zinc-900">Análisis de Machine Learning</CardTitle>
+        <CardTitle className="text-xl font-bold text-foreground">Análisis de Machine Learning</CardTitle>
       </CardHeader>
 
       <CardContent className="p-0 space-y-8">
         {/* Main Progression */}
         <div className="space-y-3">
-          <div className="flex justify-between items-center text-xs font-bold text-zinc-900">
+          <div className="flex justify-between items-center text-xs font-bold text-foreground">
             <span>Probabilidad de Certeza</span>
             <span>{probability}%</span>
           </div>
-          <div className="h-2 w-full bg-indigo-50 rounded-full overflow-hidden border border-indigo-100">
-            <div className="h-full bg-indigo-400 rounded-full" style={{ width: `${probability}%` }} />
+          <div className="h-2 w-full bg-primary/10 rounded-full overflow-hidden border border-primary/20">
+            <div className="h-full bg-primary rounded-full" style={{ width: `${probability}%` }} />
           </div>
         </div>
 
         {/* Symptoms Intensity List */}
         <div className="space-y-1">
-          <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest mb-3">SÍNTOMAS DETECTADOS POR INTENSIDAD</h4>
+          <h4 className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-3">SÍNTOMAS DETECTADOS POR INTENSIDAD</h4>
           {symptoms.length > 0 ? symptoms.map((sym, idx) => (
             <SymptomIntensity
               key={idx}
@@ -91,23 +91,23 @@ export const MLAnalysisResults = ({
               intensity={getIntensityPercent(sym.intensity)}
             />
           )) : (
-            <p className="text-[10px] text-slate-400 italic">Ningún síntoma detectado</p>
+            <p className="text-[10px] text-muted-foreground italic">Ningún síntoma detectado</p>
           )}
         </div>
 
         {/* Comparison Box */}
         <div className="bg-orange-50/50 border border-orange-100 rounded-xl p-6 space-y-3">
-          <h5 className="text-[10px] font-bold text-zinc-900 flex justify-between">
+          <h5 className="text-[10px] font-bold text-foreground flex justify-between">
             Comparación con Criterios CIE-11
           </h5>
           <div className="flex justify-between items-start">
             <div className="space-y-1">
-              <p className="text-[10px] text-slate-500 font-bold">Criterio Sugerido:</p>
-              <p className="text-[10px] text-zinc-900 font-bold">{dsm5.meets_criteria ? 'Cumple Criterios Mayores' : 'No Cumple Criterios Mayores'}</p>
+              <p className="text-[10px] text-muted-foreground font-bold">Criterio Sugerido:</p>
+              <p className="text-[10px] text-foreground font-bold">{dsm5.meets_criteria ? 'Cumple Criterios Mayores' : 'No Cumple Criterios Mayores'}</p>
             </div>
             <div className="text-right">
-              <p className="text-[10px] text-slate-500 font-bold">Coincidencia:</p>
-              <p className="text-[11px] text-zinc-900 font-bold">{dsm5.meets_criteria ? 'Aprobado' : 'Revisar'}</p>
+              <p className="text-[10px] text-muted-foreground font-bold">Coincidencia:</p>
+              <p className="text-[11px] text-foreground font-bold">{dsm5.meets_criteria ? 'Aprobado' : 'Revisar'}</p>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ export const MLAnalysisResults = ({
 
         <button
           onClick={onViewDetails}
-          className="w-full py-3 bg-[#637bc4] hover:bg-zinc-800 text-white rounded-lg shadow-lg shadow-indigo-100 text-[10px] font-bold transition-all uppercase tracking-widest"
+          className="w-full py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg shadow-lg shadow-primary/10 text-[10px] font-bold transition-all uppercase tracking-widest"
         >
           Ver Detalles de Análisis de Machine Learning
         </button>

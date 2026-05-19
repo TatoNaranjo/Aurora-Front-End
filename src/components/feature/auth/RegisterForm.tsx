@@ -150,8 +150,8 @@ export const RegisterForm = () => {
     return (
       <Card className="min-w-100 min-h-96 rounded-[5px] md:outline-2 md:outline-offset-[-2px] md:outline-zinc-800/20 flex flex-col items-center justify-center mx-auto">
         <div className="flex flex-col items-center gap-4 py-12">
-          <Loader2 className="w-10 h-10 text-zinc-900 animate-spin" />
-          <p className="text-sm text-slate-500 font-medium">Verificando invitación...</p>
+          <Loader2 className="w-10 h-10 text-foreground animate-spin" />
+          <p className="text-sm text-muted-foreground font-medium">Verificando invitación...</p>
         </div>
       </Card>
     );
@@ -162,11 +162,11 @@ export const RegisterForm = () => {
     return (
       <Card className="min-w-100 min-h-96 rounded-[5px] md:outline-2 md:outline-offset-[-2px] md:outline-zinc-800/20 flex flex-col items-center justify-center mx-auto p-8">
         <div className="flex flex-col items-center gap-4 text-center">
-          <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center">
-            <X className="w-7 h-7 text-red-600" />
+          <div className="w-14 h-14 rounded-full bg-destructive/10 flex items-center justify-center">
+            <X className="w-7 h-7 text-destructive" />
           </div>
-          <h3 className="text-lg font-bold text-zinc-900">Invitación inválida</h3>
-          <p className="text-sm text-slate-500 max-w-xs">{invitationCheckError}</p>
+          <h3 className="text-lg font-bold text-foreground">Invitación inválida</h3>
+          <p className="text-sm text-muted-foreground max-w-xs">{invitationCheckError}</p>
           <Button onClick={() => navigate('/register')} variant="outline" className="mt-2">
             Registro normal
           </Button>
@@ -184,7 +184,7 @@ export const RegisterForm = () => {
         <CardTitle className="justify-center text-black text-3xl font-bold mb-1 text-center">
           {invitationValid ? "Completa tu Registro" : "Registro de Usuario"}
         </CardTitle>
-        <CardDescription className="justify-center text-slate-500 text-sm font-normal text-center">
+        <CardDescription className="justify-center text-muted-foreground text-sm font-normal text-center">
           {invitationValid
             ? `Has sido invitado como ${invitationData?.tipo_usuario}. Completa tus datos para activar tu cuenta.`
             : "Ingresa tus datos para crear una cuenta"}
@@ -228,7 +228,7 @@ export const RegisterForm = () => {
                     id="correo-form-field"
                     aria-invalid={fieldState.invalid}
                     disabled={invitationValid}
-                    className={`rounded outline-1 outline-offset-[-1px] outline-neutral-400 px-2 py-1 ${invitationValid ? 'bg-zinc-50 text-zinc-400 cursor-not-allowed' : ''}`}
+                    className={`rounded outline-1 outline-offset-[-1px] outline-neutral-400 px-2 py-1 ${invitationValid ? 'bg-muted text-muted-foreground cursor-not-allowed' : ''}`}
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -277,12 +277,12 @@ export const RegisterForm = () => {
                 {isUsernameVerified && <Check className="ml-2 h-4 w-4" />}
               </Button>
               {usernameStatus === 'taken' && (
-                <p className="text-sm text-red-500 flex items-center gap-1">
+                <p className="text-sm text-destructive flex items-center gap-1">
                   <X className="h-4 w-4" /> El nombre de usuario ya está en uso
                 </p>
               )}
               {usernameStatus === 'available' && (
-                <p className="text-sm text-green-600 flex items-center gap-1">
+                <p className="text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                   <Check className="h-4 w-4" /> Nombre de usuario disponible
                 </p>
               )}

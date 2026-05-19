@@ -7,12 +7,12 @@ interface MetricItemProps {
 }
 
 const MetricItem = ({ label, value }: MetricItemProps) => (
-  <Card className="flex-1 rounded-2xl border border-zinc-100 shadow-sm p-6 bg-white overflow-hidden min-w-[200px]">
+  <Card className="flex-1 rounded-2xl border border-border shadow-sm p-6 bg-card overflow-hidden min-w-[200px] transition-colors duration-300">
     <div className="flex justify-between items-center mb-2">
-      <span className="text-sm font-bold text-slate-400">{label}</span>
-      <Users className="w-5 h-5 text-zinc-900" />
+      <span className="text-sm font-bold text-muted-foreground">{label}</span>
+      <Users className="w-5 h-5 text-foreground" />
     </div>
-    <span className="text-3xl font-bold text-zinc-900">{value}</span>
+    <span className="text-3xl font-bold text-foreground">{value}</span>
   </Card>
 );
 

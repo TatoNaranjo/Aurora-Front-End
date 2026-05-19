@@ -69,8 +69,8 @@ export const PatientSelector = ({ onSelect, onCreate }: PatientSelectorProps) =>
 
   if (isCreating && canCreate) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-        <h3 className="text-xl font-semibold mb-4 text-indigo-900 flex items-center gap-2">
+      <div className="bg-card p-6 rounded-lg shadow-md border border-gray-100">
+        <h3 className="text-xl font-semibold mb-4 text-primary flex items-center gap-2">
           <UserPlus className="w-5 h-5" /> Registrar Nuevo Paciente
         </h3>
         <form onSubmit={handleCreateSubmit} className="space-y-4 max-w-md">
@@ -80,7 +80,7 @@ export const PatientSelector = ({ onSelect, onCreate }: PatientSelectorProps) =>
               id="sexo"
               value={sexo}
               onChange={(e) => setSexo(Number(e.target.value))}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md transition-colors duration-300"
             >
               <option value={1}>Masculino</option>
               <option value={2}>Femenino</option>
@@ -92,7 +92,7 @@ export const PatientSelector = ({ onSelect, onCreate }: PatientSelectorProps) =>
               id="rango"
               value={rangoEdadId}
               onChange={(e) => setRangoEdadId(Number(e.target.value))}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md transition-colors duration-300"
               required
             >
               <option value="">Seleccione un rango</option>
@@ -116,7 +116,7 @@ export const PatientSelector = ({ onSelect, onCreate }: PatientSelectorProps) =>
     <div className="space-y-4">
       <div className="flex justify-between items-center gap-4">
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Buscar por ID..."
             value={searchTerm}

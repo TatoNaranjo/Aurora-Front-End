@@ -11,12 +11,12 @@ interface AnalysisFieldProps {
 
 const AnalysisField = ({ label, placeholder, value, onChange }: AnalysisFieldProps) => (
   <div className="space-y-3">
-    <label className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">{label}</label>
+    <label className="text-[10px] font-bold text-foreground uppercase tracking-widest">{label}</label>
     <textarea
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full h-24 p-4 rounded-xl border border-zinc-100 bg-zinc-50/30 text-xs font-medium text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-all resize-none leading-relaxed"
+      className="w-full h-24 p-4 rounded-xl border border-border bg-muted/30 text-xs font-medium text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none leading-relaxed transition-colors duration-300"
     />
   </div>
 );
@@ -39,10 +39,10 @@ export const PractitionerAnalysis = ({ data, onChange }: PractitionerAnalysisPro
   };
 
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 mt-8">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 mt-8 transition-colors duration-300">
       <CardHeader className="p-0 mb-6">
-        <CardTitle className="text-xl font-bold text-zinc-900">Tu Análisis Clínico</CardTitle>
-        <p className="text-[10px] text-slate-400 font-medium">Registra tus observaciones e hipótesis clínicas antes de ver los resultados del sistema para un mejor aprendizaje.</p>
+        <CardTitle className="text-xl font-bold text-foreground">Tu Análisis Clínico</CardTitle>
+        <p className="text-[10px] text-muted-foreground font-medium">Registra tus observaciones e hipótesis clínicas antes de ver los resultados del sistema para un mejor aprendizaje.</p>
       </CardHeader>
 
       <CardContent className="p-0 space-y-8">
@@ -71,14 +71,14 @@ export const PractitionerAnalysis = ({ data, onChange }: PractitionerAnalysisPro
           onChange={(val) => handleChange('hipotesis', val)}
         />
 
-        <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-4">
-          <p className="text-[9px] text-zinc-900 leading-relaxed">
+        <div className="bg-muted border border-border rounded-xl p-4">
+          <p className="text-[9px] text-foreground leading-relaxed">
             <span className="font-bold">Recuerda:</span> Estos ejercicios son herramientas de entrenamiento clínico. Comparar tu razonamiento con el del modelo basado en IA te ayudará a fortalecer tu juicio clínico objetivo.
           </p>
         </div>
 
         <div className="text-center pt-4">
-          <p className="text-[9px] text-slate-400 font-medium italic">
+          <p className="text-[9px] text-muted-foreground font-medium italic">
             Completa tu análisis clínico antes de ejecutar el análisis del modelo.
           </p>
         </div>

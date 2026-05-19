@@ -65,8 +65,8 @@ const resources = [
 export const Library = () => {
   return (
     <DefaultLayout>
-      <div className="flex justify-center flex-col items-center max-w-[1440px] py-20 px-11 gap-4 w-full mx-auto">
-        <div className="bg-indigo-300 rounded-full p-4">
+      <div className="flex justify-center flex-col items-center max-w-[1440px] py-20 px-11 gap-4 w-full mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="bg-primary rounded-full p-4">
           <img src={MindUpper} alt="Upper Mind Icon" />
         </div>
         <Title type="principal">Biblioteca de Recursos</Title>
@@ -85,14 +85,14 @@ export const Library = () => {
           <div className="flex gap-4 my-8 flex-wrap justify-around ">
             {resources.map((item) => (
               <Card
-              className="rounded border border-indigo-300 py-1 flex flex-col text-left items-start max-w-96 min-h-40 px-1">
+              className="rounded border border-primary py-1 flex flex-col text-left items-start max-w-96 min-h-40 px-1 transition-colors duration-300">
                 <CardHeader className="flex flex-col gap-2">
                   <div className="flex justify-between">
                     <MindIcon/>
                     <Badge variant={"outline"}><span className="font-bold">{item.type}</span></Badge>
                   </div>
                   <h3 className="text-black font-semibold text-xl">{item.title}</h3>
-                  <h4 className={`text-sm font-normal text-slate-500`}>{item.description}</h4>
+                  <h4 className={`text-sm font-normal text-muted-foreground`}>{item.description}</h4>
                 </CardHeader>
                 <CardContent>
                   {item.description}

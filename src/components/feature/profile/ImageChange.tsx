@@ -39,7 +39,7 @@ export const ImageChange = () => {
     <div className="max-w-[300px] flex flex-col items-center gap-4 py-5">
       <button type="button" className="relative group cursor-pointer" onClick={onButtonClick}>
         <img
-          className="rounded-full w-40 h-40 object-cover border-4 border-indigo-50 transition-all hover:border-indigo-200 shadow-md"
+          className="rounded-full w-40 h-40 object-cover border-4 border-primary/10 transition-all hover:border-primary/30 shadow-md"
           src={preview || `${apiUrl}${userState.usuario?.imagen}`}
           alt={userState.usuario?.nombre_usuario}
         />
@@ -54,7 +54,7 @@ export const ImageChange = () => {
         className="hidden"
         accept="image/*"
       />
-      <p className="text-center justify-center text-zinc-500 text-sm font-light px-4">
+      <p className="text-center justify-center text-muted-foreground text-sm font-light px-4">
         Haz clic en la imagen para seleccionar una nueva foto de perfil
       </p>
       <div className="flex flex-col gap-2 w-full px-4">

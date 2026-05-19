@@ -8,8 +8,8 @@ interface AnalysisDisplayProps {
 
 const AnalysisDisplay = ({ label, content }: AnalysisDisplayProps) => (
   <div className="space-y-3">
-    <h4 className="text-[12px] font-bold text-zinc-900">{label}</h4>
-    <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
+    <h4 className="text-[12px] font-bold text-foreground">{label}</h4>
+    <p className="text-[11px] text-muted-foreground font-medium leading-relaxed">
       {content || "---"}
     </p>
   </div>
@@ -24,10 +24,10 @@ export const ReadOnlyAnalysis = ({ analysisData }: ReadOnlyAnalysisProps) => {
     .map(s => `${s.name} (${s.intensity * 100}%)`)
     .join(', ');
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8 mt-8">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 mt-8 transition-colors duration-300">
       <CardHeader className="p-0 mb-8">
-        <CardTitle className="text-xl font-bold text-zinc-900">Análisis Clínico del Estudiante</CardTitle>
-        <p className="text-[10px] text-slate-400 font-medium">Evaluación y conclusiones presentadas por el estudiante</p>
+        <CardTitle className="text-xl font-bold text-foreground">Análisis Clínico del Estudiante</CardTitle>
+        <p className="text-[10px] text-muted-foreground font-medium">Evaluación y conclusiones presentadas por el estudiante</p>
       </CardHeader>
 
       <CardContent className="p-0 space-y-8">

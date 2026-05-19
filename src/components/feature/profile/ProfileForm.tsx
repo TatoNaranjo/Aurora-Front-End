@@ -73,14 +73,14 @@ export const ProfileForm = () => {
   };
 
   return (
-    <div className="w-full bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 font-poppins">
+    <div className="w-full bg-card p-8 rounded-2xl shadow-sm border border-border font-poppins transition-colors duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
         <div className="space-y-2">
-          <label htmlFor="nombre" className="text-xs font-bold text-indigo-400 uppercase tracking-widest">NOMBRE COMPLETO</label>
+          <label htmlFor="nombre" className="text-xs font-bold text-primary uppercase tracking-widest">NOMBRE COMPLETO</label>
           <input
             type="text"
             name="nombre"
-            className="w-full p-3 rounded-xl border border-zinc-200 bg-zinc-50 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm font-semibold"
+            className="w-full p-3 rounded-xl border border-border bg-muted focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-semibold transition-colors duration-300"
             placeholder="¿Cuál es tu nombre?"
             onChange={handleChange}
             value={formData.nombre}
@@ -89,36 +89,36 @@ export const ProfileForm = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label htmlFor="email" className="text-xs font-bold text-indigo-400 uppercase tracking-widest">CORREO ELECTRÓNICO</label>
+            <label htmlFor="email" className="text-xs font-bold text-primary uppercase tracking-widest">CORREO ELECTRÓNICO</label>
             <input
               type="text"
               name="email"
-              className="w-full p-3 rounded-xl border border-zinc-200 bg-zinc-100 text-zinc-500 text-sm font-semibold cursor-not-allowed"
+              className="w-full p-3 rounded-xl border border-border bg-muted text-muted-foreground text-sm font-semibold cursor-not-allowed transition-colors duration-300"
               disabled={true}
               value={formData.email}
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="nombreUsuario" className="text-xs font-bold text-indigo-400 uppercase tracking-widest">NOMBRE DE USUARIO</label>
+            <label htmlFor="nombreUsuario" className="text-xs font-bold text-primary uppercase tracking-widest">NOMBRE DE USUARIO</label>
             <input
               type="text"
               name="nombreUsuario"
-              className="w-full p-3 rounded-xl border border-zinc-200 bg-zinc-100 text-zinc-500 text-sm font-semibold cursor-not-allowed"
+              className="w-full p-3 rounded-xl border border-border bg-muted text-muted-foreground text-sm font-semibold cursor-not-allowed transition-colors duration-300"
               disabled={true}
               value={formData.nombreUsuario}
             />
           </div>
         </div>
 
-        <div className="pt-6 border-t border-zinc-100">
-          <h3 className="text-lg font-bold text-zinc-800 mb-4">Seguridad</h3>
+        <div className="pt-6 border-t border-border">
+          <h3 className="text-lg font-bold text-muted-foreground mb-4">Seguridad</h3>
           <div className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="claveActual" className="text-xs font-bold text-zinc-500 uppercase tracking-widest">CONTRASEÑA ACTUAL</label>
+              <label htmlFor="claveActual" className="text-xs font-bold text-muted-foreground uppercase tracking-widest">CONTRASEÑA ACTUAL</label>
               <input
                 type="password"
                 name="claveActual"
-                className="w-full p-3 rounded-xl border border-zinc-200 bg-zinc-50 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm"
+                className="w-full p-3 rounded-xl border border-border bg-muted focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm transition-colors duration-300"
                 placeholder="********"
                 onChange={handleChange}
                 value={formData.claveActual}
@@ -126,22 +126,22 @@ export const ProfileForm = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="nuevaClave" className="text-xs font-bold text-zinc-500 uppercase tracking-widest">NUEVA CONTRASEÑA</label>
+                <label htmlFor="nuevaClave" className="text-xs font-bold text-muted-foreground uppercase tracking-widest">NUEVA CONTRASEÑA</label>
                 <input
                   type="password"
                   name="nuevaClave"
-                  className="w-full p-3 rounded-xl border border-zinc-200 bg-zinc-50 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm"
+                  className="w-full p-3 rounded-xl border border-border bg-muted focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm transition-colors duration-300"
                   placeholder="********"
                   onChange={handleChange}
                   value={formData.nuevaClave}
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="confirmarNuevaClave" className="text-xs font-bold text-zinc-500 uppercase tracking-widest">CONFIRMAR</label>
+                <label htmlFor="confirmarNuevaClave" className="text-xs font-bold text-muted-foreground uppercase tracking-widest">CONFIRMAR</label>
                 <input
                   type="password"
                   name="confirmarNuevaClave"
-                  className="w-full p-3 rounded-xl border border-zinc-200 bg-zinc-50 focus:ring-2 focus:ring-blue-500 outline-none transition-all text-sm"
+                  className="w-full p-3 rounded-xl border border-border bg-muted focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm transition-colors duration-300"
                   placeholder="********"
                   onChange={handleChange}
                   value={formData.confirmarNuevaClave}
@@ -151,14 +151,14 @@ export const ProfileForm = () => {
           </div>
         </div>
 
-        {error && <div className="p-4 bg-red-50 text-red-600 text-xs font-bold rounded-xl border border-red-100">{error}</div>}
-        {success && <div className="p-4 bg-green-50 text-green-600 text-xs font-bold rounded-xl border border-green-100">{success}</div>}
+        {error && <div className="p-4 bg-destructive/10 text-destructive text-xs font-bold rounded-xl border border-destructive/20">{error}</div>}
+        {success && <div className="p-4 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/20">{success}</div>}
 
-        <div className="pt-6 flex justify-end gap-4 border-t border-zinc-100">
+        <div className="pt-6 flex justify-end gap-4 border-t border-border">
           <Button
             type="submit"
             disabled={loading}
-            className="bg-indigo-400 hover:bg-indigo-500 text-white font-bold py-3 px-8 rounded-xl shadow-lg shadow-indigo-100 transition-all"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-8 rounded-xl shadow-lg shadow-primary/10 transition-all"
           >
             {loading ? "Guardando..." : "Guardar Cambios"}
           </Button>

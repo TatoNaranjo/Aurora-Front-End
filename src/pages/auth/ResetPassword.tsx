@@ -14,7 +14,7 @@ export const ResetPassword = () => {
         {token ? (
           <ResetPasswordForm token={token} />
         ) : (
-          <div className="mx-auto text-center bg-white p-8 rounded shadow-md">
+          <div className="mx-auto text-center bg-card p-8 rounded shadow-md transition-colors duration-300 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-2xl font-bold mb-4">Token Inválido</h2>
             <p>No se proporcionó un token válido para restablecer la contraseña.</p>
           </div>

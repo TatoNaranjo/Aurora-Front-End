@@ -22,10 +22,10 @@ export const QuickActions = () => {
   ];
 
   return (
-    <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-6 hover:shadow-md transition-shadow">
+    <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-6 hover:shadow-md transition-shadow transition-colors duration-300">
       <CardHeader className="p-0 mb-2">
-        <CardTitle className="text-xl font-bold text-zinc-900">Acciones Rápidas</CardTitle>
-        <p className="text-[10px] text-slate-400 font-medium leading-tight">
+        <CardTitle className="text-xl font-bold text-foreground">Acciones Rápidas</CardTitle>
+        <p className="text-[10px] text-muted-foreground font-medium leading-tight">
           Comienza un nuevo diagnóstico o revisa casos en curso según tu rol en la plataforma.
         </p>
       </CardHeader>
@@ -35,18 +35,18 @@ export const QuickActions = () => {
             key={action.label}
             onClick={() => navigate(action.path)}
             className={`flex items-center gap-4 p-4 rounded-xl transition-all border text-left ${action.active
-              ? "bg-indigo-400 border-indigo-500 text-white shadow-md shadow-indigo-100"
-              : "bg-white border-zinc-100 text-zinc-600 hover:bg-zinc-50"
+              ? "bg-primary border-primary text-primary-foreground shadow-md shadow-primary/10"
+              : "bg-card border-border text-muted-foreground hover:bg-muted"
               }`}
           >
-            <div className={`${action.active ? "text-white" : "text-zinc-900"}`}>
+            <div className={`${action.active ? "text-primary-foreground" : "text-foreground"}`}>
               {action.icon}
             </div>
             <div>
-              <p className={`text-sm font-bold ${action.active ? "text-white" : "text-zinc-900"}`}>
+              <p className={`text-sm font-bold ${action.active ? "text-primary-foreground" : "text-foreground"}`}>
                 {action.label}
               </p>
-              <p className={`text-[9px] font-medium leading-none ${action.active ? "text-indigo-100" : "text-slate-400"}`}>
+              <p className={`text-[9px] font-medium leading-none ${action.active ? "text-primary-foreground" : "text-muted-foreground"}`}>
                 {action.desc}
               </p>
             </div>

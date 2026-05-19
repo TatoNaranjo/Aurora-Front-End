@@ -6,9 +6,9 @@ import { useServices } from "@/context/useServices";
 import type { Modelo, Retroalimentacion } from "@/types/BackendTypes";
 
 const CommentItem = ({ text }: { text: string }) => (
-  <div className="p-4 rounded-xl border border-zinc-50 hover:bg-zinc-50 transition-all flex gap-3">
-    <Eye className="w-4 h-4 text-zinc-900 mt-0.5" />
-    <p className="text-[10px] font-medium text-slate-500 leading-relaxed">{text}</p>
+  <div className="p-4 rounded-xl border border-border hover:bg-muted transition-colors flex gap-3">
+    <Eye className="w-4 h-4 text-foreground mt-0.5" />
+    <p className="text-[10px] font-medium text-muted-foreground leading-relaxed">{text}</p>
   </div>
 );
 
@@ -45,18 +45,18 @@ export const DiagnosticSidebar = ({
   return (
     <div className="space-y-8">
       {/* Actions Card */}
-      <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8">
+      <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 transition-colors duration-300">
         <CardHeader className="p-0 mb-6 text-center">
-          <CardTitle className="text-md font-bold text-zinc-900">Acciones</CardTitle>
-          <p className="text-[8px] text-slate-400 font-medium uppercase tracking-widest mt-1">Este caso se guardará automáticamente al momento de ejecutar el análisis de Machine Learning</p>
+          <CardTitle className="text-md font-bold text-foreground">Acciones</CardTitle>
+          <p className="text-[8px] text-muted-foreground font-medium uppercase tracking-widest mt-1">Este caso se guardará automáticamente al momento de ejecutar el análisis de Machine Learning</p>
         </CardHeader>
 
         <CardContent className="p-0 space-y-8">
           <div className="space-y-4">
-            <h4 className="text-[10px] font-bold text-zinc-900 text-center uppercase tracking-widest">ANÁLISIS DE MACHINE LEARNING</h4>
+            <h4 className="text-[10px] font-bold text-foreground text-center uppercase tracking-widest">ANÁLISIS DE MACHINE LEARNING</h4>
             <div className="space-y-2">
-              <label className="text-[9px] font-bold text-zinc-900 uppercase tracking-wider">SELECCIONAR MODELO</label>
-              <select className="w-full p-2.5 rounded-lg border border-zinc-200 text-xs font-medium text-slate-400 bg-white">
+              <label className="text-[9px] font-bold text-foreground uppercase tracking-wider">SELECCIONAR MODELO</label>
+              <select className="w-full p-2.5 rounded-lg border border-border text-xs font-medium text-muted-foreground bg-card transition-colors duration-300">
                 <option value="">Seleccionar una Opción</option>
                 {modelos.map((m) => (
                   <option key={m.id_modelo} value={m.nombre_modelo}>
@@ -68,29 +68,29 @@ export const DiagnosticSidebar = ({
 
             <button
               onClick={onExecute}
-              className="w-full py-2.5 bg-indigo-300 hover:bg-indigo-400 text-white rounded-lg text-[10px] font-bold transition-all mb-4"
+              className="w-full py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg text-[10px] font-bold transition-colors duration-300 mb-4"
             >
               Ejecutar Análisis
             </button>
             <button
               type="button"
               onClick={onViewModelComparison}
-              className="w-full block text-[9px] text-indigo-400 font-bold text-center cursor-pointer hover:underline focus:outline-none focus:underline"
+              className="w-full block text-[9px] text-primary font-bold text-center cursor-pointer hover:underline focus:outline-none focus:underline"
             >
               Ver Comparación de Modelos
             </button>
           </div>
 
-          <div className="space-y-4 pt-4 border-t border-zinc-100 font-poppins">
+          <div className="space-y-4 pt-4 border-t border-border font-poppins">
             <button
               onClick={onSave}
-              className="w-full py-2.5 bg-[#637bc4] hover:bg-indigo-500 text-white rounded-lg text-[10px] font-bold transition-all shadow-md shadow-indigo-100"
+              className="w-full py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg text-[10px] font-bold transition-colors duration-300 shadow-md shadow-primary/10"
             >
               Guardar Diagnóstico
             </button>
             <button
               onClick={onDownloadPDF}
-              className="w-full py-2.5 bg-indigo-300 hover:bg-indigo-400 text-white rounded-lg text-[10px] font-bold transition-all shadow-md shadow-indigo-50"
+              className="w-full py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg text-[10px] font-bold transition-colors duration-300 shadow-md shadow-primary/10"
             >
               Generar Informe PDF
             </button>
@@ -99,9 +99,9 @@ export const DiagnosticSidebar = ({
       </Card>
 
       {/* Guided Comments Card */}
-      <Card className="rounded-2xl border-zinc-100 shadow-sm bg-white overflow-hidden p-8">
+      <Card className="rounded-2xl border-border shadow-sm bg-card overflow-hidden p-8 transition-colors duration-300">
         <CardHeader className="p-0 mb-6">
-          <CardTitle className="text-md font-bold text-zinc-900 text-center">Comentarios Guiados</CardTitle>
+          <CardTitle className="text-md font-bold text-foreground text-center">Comentarios Guiados</CardTitle>
         </CardHeader>
 
         <CardContent className="p-0 space-y-4">

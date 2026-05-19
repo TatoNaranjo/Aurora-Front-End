@@ -50,26 +50,26 @@ export const SymptomSelector = ({ symptoms, onChange }: SymptomSelectorProps) =>
   return (
     <div className="space-y-6">
       <div className="flex flex-col space-y-2">
-        <label className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">
+        <label className="text-[10px] font-bold text-foreground uppercase tracking-widest">
           Síntomas Identificados y Gravedad
         </label>
-        <p className="text-[10px] text-slate-400">Seleccione la intensidad de cada síntoma (0: No presenta, 1: Leve, 2: Moderado, 3: Grave)</p>
+        <p className="text-[10px] text-muted-foreground">Seleccione la intensidad de cada síntoma (0: No presenta, 1: Leve, 2: Moderado, 3: Grave)</p>
       </div>
 
       <div className="space-y-3">
         {symptoms.map((symptom, index) => (
-          <div key={index} className="flex items-center justify-between p-3 bg-zinc-50 border border-zinc-100 rounded-xl transition-all hover:border-indigo-100">
-            <span className="text-xs font-medium text-zinc-700">{symptom.name}</span>
+          <div key={index} className="flex items-center justify-between p-3 bg-muted border border-border rounded-xl transition-all hover:border-primary/50">
+            <span className="text-xs font-medium text-foreground">{symptom.name}</span>
             <div className="flex items-center gap-4">
-              <div className="flex bg-zinc-200 p-0.5 rounded-lg gap-0.5">
+              <div className="flex bg-muted/80 p-0.5 rounded-lg gap-0.5">
                 {[0, 1, 2, 3].map((val) => (
                   <button
                     key={val}
                     type="button"
                     onClick={() => updateIntensity(index, val)}
                     className={`w-7 h-7 rounded-md text-[10px] font-bold transition-all ${symptom.intensity === val
-                      ? (val === 0 ? 'bg-zinc-400 text-white' : 'bg-indigo-600 text-white shadow-sm')
-                      : 'text-zinc-500 hover:text-zinc-900'
+                      ? (val === 0 ? 'bg-secondary text-primary-foreground' : 'bg-primary text-primary-foreground shadow-sm')
+                      : 'text-muted-foreground hover:text-foreground'
                       }`}
                   >
                     {val}
@@ -79,7 +79,7 @@ export const SymptomSelector = ({ symptoms, onChange }: SymptomSelectorProps) =>
               <button
                 type="button"
                 onClick={() => removeSymptom(index)}
-                className="p-1.5 text-slate-300 hover:text-red-500 transition-colors"
+                className="p-1.5 text-muted-foreground hover:text-red-500 transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -95,7 +95,7 @@ export const SymptomSelector = ({ symptoms, onChange }: SymptomSelectorProps) =>
               key={ds}
               type="button"
               onClick={() => addSymptom(ds)}
-              className="px-3 py-1.5 bg-white border border-dashed border-zinc-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-600 rounded-full text-[10px] font-medium transition-all flex items-center gap-1.5"
+              className="px-3 py-1.5 bg-card border border-dashed border-border text-muted-foreground hover:border-primary/50 hover:text-primary rounded-full text-[10px] font-medium transition-all flex items-center gap-1.5 transition-colors duration-300"
             >
               <Plus className="w-3 h-3" /> {ds}
             </button>
@@ -109,12 +109,12 @@ export const SymptomSelector = ({ symptoms, onChange }: SymptomSelectorProps) =>
             onChange={(e) => setCustomSymptom(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddCustom())}
             placeholder="Agregar síntoma personalizado..."
-            className="flex-1 p-3 rounded-xl border border-zinc-100 bg-zinc-50/30 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-all"
+            className="flex-1 p-3 rounded-xl border border-border bg-muted/30 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all transition-colors duration-300"
           />
           <button
             type="button"
             onClick={handleAddCustom}
-            className="px-4 py-2 bg-zinc-900 text-white rounded-xl text-xs font-bold hover:bg-black transition-all"
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-xl text-xs font-bold hover:bg-primary/90 transition-all transition-colors duration-300"
           >
             Añadir
           </button>

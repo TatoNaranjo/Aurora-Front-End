@@ -10,14 +10,14 @@ interface StatCardProps {
 }
 
 const StatCard = ({ label, value, icon }: StatCardProps) => (
-  <Card className="rounded-2xl border border-zinc-100 shadow-sm p-6 bg-white overflow-hidden hover:shadow-md transition-shadow">
+  <Card className="rounded-2xl border border-border shadow-sm p-6 bg-card overflow-hidden hover:shadow-md transition-shadow transition-colors duration-300">
     <div className="flex justify-between items-center mb-2">
-      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{label}</span>
-      <div className="p-2 bg-indigo-50 rounded-lg text-indigo-500">
+      <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">{label}</span>
+      <div className="p-2 bg-primary/10 rounded-lg text-primary">
         {icon}
       </div>
     </div>
-    <span className="text-2xl font-bold text-zinc-900">{value}</span>
+    <span className="text-2xl font-bold text-foreground">{value}</span>
   </Card>
 );
 
@@ -42,11 +42,11 @@ export const ActivityStatistics = () => {
   if (loading || !statistics) {
     return (
       <div className="mt-8 animate-pulse">
-        <h3 className="text-xl font-bold text-zinc-900 mb-1">Estadísticas de Actividad</h3>
-        <p className="text-sm text-slate-500 mb-6 font-light leading-relaxed">Cargando...</p>
+        <h3 className="text-xl font-bold text-foreground mb-1">Estadísticas de Actividad</h3>
+        <p className="text-sm text-muted-foreground mb-6 font-light leading-relaxed">Cargando...</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(6)].map((_, i) => (
-            <Card key={i} className="h-28 rounded-2xl border border-zinc-100 shadow-sm p-6 bg-slate-100" />
+            <Card key={i} className="h-28 rounded-2xl border border-border shadow-sm p-6 bg-muted transition-colors duration-300" />
           ))}
         </div>
       </div>
@@ -55,8 +55,8 @@ export const ActivityStatistics = () => {
 
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-bold text-zinc-900 mb-1">Estadísticas de Actividad</h3>
-      <p className="text-sm text-slate-500 mb-6 font-light leading-relaxed">Resumen detallado de tu desempeño y contribución en la plataforma.</p>
+      <h3 className="text-xl font-bold text-foreground mb-1">Estadísticas de Actividad</h3>
+      <p className="text-sm text-muted-foreground mb-6 font-light leading-relaxed">Resumen detallado de tu desempeño y contribución en la plataforma.</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <StatCard label="Diagnósticos Totales" value={statistics.diagnosticos_totales} icon={<FileText className="w-4 h-4" />} />
