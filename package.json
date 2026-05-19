@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "version": "1.1.2-aurora",
+  "version": "1.1.4-aurora",
   "type": "module",
   "scripts": {
     "dev": "vite",

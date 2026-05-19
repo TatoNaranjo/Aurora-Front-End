@@ -86,7 +86,7 @@ export const Dashboard = () => {
       description: "Métricas y estadísticas del sistema",
       icon: <BarChart3 className="w-6 h-6 text-blue-500" />,
       path: "/reports",
-      roles: [UserRole.ADMIN, UserRole.MODERADOR, UserRole.PSICOLOGO],
+      roles: [UserRole.ADMIN, UserRole.MODERADOR],
       color: "bg-blue-50"
     },
     {
@@ -94,7 +94,7 @@ export const Dashboard = () => {
       description: "Validar el funcionamiento del sistema",
       icon: <SearchCode className="w-6 h-6 text-yellow-500" />,
       path: "/testing-validation",
-      roles: [UserRole.ADMIN, UserRole.MODERADOR, UserRole.PSICOLOGO, UserRole.EVALUADOR],
+      roles: [UserRole.ADMIN, UserRole.MODERADOR, UserRole.EVALUADOR],
       color: "bg-yellow-50"
     },
     {
