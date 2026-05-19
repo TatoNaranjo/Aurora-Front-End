@@ -34,7 +34,7 @@ export const AboutEthics = () => {
                 <div className="flex justify-center">
                   {ethic.icon}
                 </div>
-                <h3 className="text-black font-semibold text-3xl">{ethic.title}</h3>
+                <h3 className="text-foreground font-semibold text-3xl">{ethic.title}</h3>
               </CardHeader>
               <CardContent>
                 <p>{ethic.description}</p>

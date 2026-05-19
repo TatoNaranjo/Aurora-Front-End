@@ -7,7 +7,7 @@ export const NotFound = () => {
   return (
     <div className="flex flex-col items-center justify-center md:my-auto gap-20 my-30 mx-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex flex-col items-center justify-center gap-10">
-        <h2 className="text-black text-6xl md:text-7xl font-bold">Error 404</h2>
+        <h2 className="text-foreground text-6xl md:text-7xl font-bold">Error 404</h2>
         <p className="text-center text-xl md:text-2xl max-w-[600px] text-muted-foreground">Ups, Parece que hubo un error de cálculo. <br/>
           La página a la que estás intentando acceder no existe.</p>
         <div>

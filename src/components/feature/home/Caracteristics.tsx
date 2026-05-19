@@ -27,7 +27,7 @@ export const Caracteristics = () => {
   return (
     <div className="bg-primary/10 flex justify-center animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className=" flex justify-center flex-col items-center max-w-[1440px] py-20 px-11 gap-4 w-full">
-        <h2 className="text-yellow-900 text-3xl font-bold text-center">Características Principales</h2>
+        <h2 className="text-foreground text-3xl font-bold text-center">Características Principales</h2>
         <p className="text-muted-foreground text-2xl font-semibold text-center mb-10">Herramientas avanzadas para Estudiantes y Profesionales de la Salud Mental</p>
         <div className="flex justify-around w-full flex-wrap gap-5">
           {caracteristics.map((item) => (
@@ -37,7 +37,7 @@ export const Caracteristics = () => {
                   <div className="flex justify-center">
                     <MindIcon/>
                   </div>
-                  <h3 className="text-black font-semibold text-xl">{item.title}</h3>
+                  <h3 className="text-foreground font-semibold text-xl">{item.title}</h3>
                   <h4 className={`text-sm font-normal text-muted-foreground`}>{item.description}</h4>
                 </CardHeader>
                 <CardContent>

@@ -91,7 +91,7 @@ export const Library = () => {
                     <MindIcon/>
                     <Badge variant={"outline"}><span className="font-bold">{item.type}</span></Badge>
                   </div>
-                  <h3 className="text-black font-semibold text-xl">{item.title}</h3>
+                  <h3 className="text-foreground font-semibold text-xl">{item.title}</h3>
                   <h4 className={`text-sm font-normal text-muted-foreground`}>{item.description}</h4>
                 </CardHeader>
                 <CardContent>

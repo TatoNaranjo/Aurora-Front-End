@@ -29,7 +29,7 @@ export const AboutMission = () => {
                 <div className="flex justify-center">
                   {mission.icon}
                 </div>
-                <h3 className="text-black font-semibold text-2xl">{mission.title}</h3>
+                <h3 className="text-foreground font-semibold text-2xl">{mission.title}</h3>
               </CardHeader>
               <CardContent>
                 <p>{mission.description}</p>

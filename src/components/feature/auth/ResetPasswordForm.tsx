@@ -53,7 +53,7 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
     return (
       <Card className=" min-w-100 min-h-64 rounded-[5px] md:outline-2 md:outline-offset-[-2px] md:outline-zinc-800/20 flex flex-col items-center justify-center mx-auto p-8">
         <CardHeader>
-          <CardTitle className="text-black text-2xl font-bold mb-2 text-center">
+          <CardTitle className="text-foreground text-2xl font-bold mb-2 text-center">
             Contraseña Restablecida
           </CardTitle>
           <CardDescription className="text-muted-foreground text-sm font-normal text-center">
@@ -72,7 +72,7 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
   return (
     <Card className=" min-w-100 min-h-96 rounded-[5px] md:outline-2 md:outline-offset-[-2px] md:outline-zinc-800/20 flex flex-col items-center justify-between mx-auto">
       <CardHeader>
-        <CardTitle className="justify-center text-black text-3xl font-bold mb-1 text-center">
+        <CardTitle className="justify-center text-foreground text-3xl font-bold mb-1 text-center">
           Nueva Contraseña
         </CardTitle>
         <CardDescription className="justify-center text-muted-foreground text-sm font-normal text-center">

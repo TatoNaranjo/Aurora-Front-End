@@ -39,10 +39,10 @@ export const AboutTeam = () => {
                 <div className="flex justify-center">
                   {member.icon}
                 </div>
-                <h3 className="text-black font-semibold text-3xl">{member.title}</h3>
+                <h3 className="text-foreground font-semibold text-3xl">{member.title}</h3>
               </CardHeader>
               <CardContent>
-                <p className="text-black font-semibold text-xl">{member.subtitle}</p>
+                <p className="text-foreground font-semibold text-xl">{member.subtitle}</p>
               </CardContent>
             </Card>
           ))}
