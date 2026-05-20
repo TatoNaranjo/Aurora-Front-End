@@ -1,12 +1,12 @@
 import { AlertTriangle } from "lucide-react";
 import { Card, CardContent, CardTitle } from "@/components/ui";
 import { MedicalDisclaimer } from "./MedicalDisclaimer";
-import { ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 interface AnalysisResultsProps {
   globalScore: number;
   maxScore: number;
-  symptoms: { name: string; value: number }[];
+  symptoms: { name: string; value: number; intensity?: string }[];
   classificationLabel?: string;
   trueLabel?: string;
 }
@@ -25,6 +25,14 @@ export const AnalysisResults = ({ globalScore, maxScore, symptoms, classificatio
     { name: 'Remaining', value: maxScore - globalScore }
   ];
 
+  const getIntensityWidth = (intensity?: string) => {
+    const normalized = intensity?.toLowerCase();
+    if (normalized === "severo") return 100;
+    if (normalized === "moderado") return 66;
+    if (normalized === "leve") return 33;
+    return 0;
+  };
+  console.log(symptoms);
   const COLORS = [primaryColor, '#f1f5f9'];
 
   return (
@@ -79,34 +87,25 @@ export const AnalysisResults = ({ globalScore, maxScore, symptoms, classificatio
           <p className="text-xs text-primary font-medium">Distribución de síntomas según su severidad</p>
         </div>
         <CardContent className="h-[350px] pb-6">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              layout="vertical"
-              data={symptoms}
-              margin={{ top: 5, right: 30, left: 60, bottom: 5 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} opacity={0.3} />
-              <XAxis type="number" hide />
-              <YAxis
-                type="category"
-                dataKey="name"
-                axisLine={false}
-                tickLine={false}
-                tick={{ fontSize: 10, fill: '#64748b', fontWeight: 500 }}
-                width={100}
-              />
-              <Tooltip
-                cursor={{ fill: '#f8fafc' }}
-                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
-              />
-              <Bar
-                dataKey="value"
-                fill="#14b8a6"
-                radius={[0, 4, 4, 0]}
-                barSize={24}
-              />
-            </BarChart>
-          </ResponsiveContainer>
+          <div className="w-full h-full overflow-y-auto pr-2">
+            <div className="space-y-8">
+              {symptoms.map((sym: { name: string; value: number; intensity?: string }, i: number) => {
+                const label = sym.name;
+                const width = getIntensityWidth(sym.intensity);
+                return (
+                  <div key={i} className="space-y-1.5">
+                    <div className="flex justify-between text-[9px] font-bold text-foreground uppercase">
+                      <span>{label}</span>
+                      <span>{sym.intensity || 'Detectado'}</span>
+                    </div>
+                    <div className="h-1 w-full bg-muted rounded-full overflow-hidden">
+                      <div className="h-full bg-primary rounded-full" style={{ width: `${width}%` }} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </CardContent>
       </Card>
 

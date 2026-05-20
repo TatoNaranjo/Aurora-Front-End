@@ -151,6 +151,7 @@ export const useCaseAnalysis = (caseId?: string) => {
                 ? s.symptom.replace(/_/g, " ").replace(/\b\w/g, (l: string) => l.toUpperCase())
                 : "Desconocido",
               value: s.matches || 0,
+              intensity: s.intensity
             })),
 
             shapExplanation: Array.isArray(
